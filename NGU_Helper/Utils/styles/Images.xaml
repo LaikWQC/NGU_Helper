@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:NGU_Helper.Utils.styles">
+    <Style TargetType="Image">
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant"/>
+    </Style>
+
+    <Image x:Key="AddImage" Source="/Utils/Images/add_icon.png" x:Shared="False"/>
+    <Image x:Key="DeleteImage" Source="/Utils/Images/delete_icon.png" x:Shared="False"/>
+    <Image x:Key="EditImage" Source="/Utils/Images/edit_icon.png" x:Shared="False"/>
+</ResourceDictionary>

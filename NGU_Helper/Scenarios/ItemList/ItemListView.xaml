@@ -1,0 +1,135 @@
+﻿<Window x:Class="NGU_Helper.Scenarios.ItemList.ItemListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NGU_Helper.Scenarios.ItemList"
+        mc:Ignorable="d"
+        Title="Items" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Utils/Styles/Styles.Xaml"/>
+                <ResourceDictionary Source="/Utils/Styles/Images.Xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Button Content="{StaticResource AddImage}" Style="{StaticResource SqureButtonStyle}"
+                        Command="{Binding AddZoneCommand}"/>
+                <Button Content="{StaticResource EditImage}" Style="{StaticResource SqureButtonStyle}"
+                        Command="{Binding EditZoneCommand}"/>
+                <Button Content="{StaticResource DeleteImage}" Style="{StaticResource SqureButtonStyle}"
+                        Command="{Binding DeleteZoneCommand}"/>
+            </StackPanel>
+            <ListBox ItemsSource="{Binding Zones}" SelectedItem="{Binding SelectedZone}"
+                     HorizontalContentAlignment="Stretch" 
+                     Grid.Row="1" Margin="0 2 0 0" Name="ZoneList">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Name}" Grid.Column="0" Margin="0 0 5 0"
+                                   TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding ItemsCount}" Grid.Column="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.InputBindings>
+                    <KeyBinding Gesture="Enter" Command="{Binding EditZoneCommand}"/>
+                    <KeyBinding Gesture="Delete" Command="{Binding DeleteZoneCommand}"/>
+                </ListBox.InputBindings>
+            </ListBox>
+        </Grid>
+
+        <Grid Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Button Content="{StaticResource AddImage}" Style="{StaticResource SqureButtonStyle}"
+                        Command="{Binding AddItemCommand}"/>
+                <Button Content="{StaticResource EditImage}" Style="{StaticResource SqureButtonStyle}"
+                        Command="{Binding EditItemCommand}"/>
+                <Button Content="{StaticResource DeleteImage}" Style="{StaticResource SqureButtonStyle}"
+                        Command="{Binding DeleteItemCommand}"/>
+            </StackPanel>
+            <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"
+                 HorizontalContentAlignment="Stretch"
+                 Grid.Row="1" Margin="0 2 0 0" Name="ItemList">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding Image}" Grid.Column="0"
+                                   Width="16" Height="16"
+                                   RenderOptions.BitmapScalingMode="Fant" 
+                                   Stretch="Uniform"/>
+                            <TextBlock Text="{Binding Name}" Grid.Column="1" Margin="5 0 5 0"
+                                   TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding StatsCount}" Grid.Column="2"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.InputBindings>
+                    <KeyBinding Gesture="Enter" Command="{Binding EditItemCommand}"/>
+                    <KeyBinding Gesture="Delete" Command="{Binding DeleteItemCommand}"/>
+                </ListBox.InputBindings>
+            </ListBox>
+        </Grid>
+
+        <Grid Grid.Column="2" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                <Button Content="{StaticResource AddImage}" Style="{StaticResource SqureButtonStyle}"
+                        Command="{Binding AddStatCommand}"/>
+                <Button Content="{StaticResource EditImage}" Style="{StaticResource SqureButtonStyle}"
+                        Command="{Binding EditStatCommand}"/>
+                <Button Content="{StaticResource DeleteImage}" Style="{StaticResource SqureButtonStyle}"
+                        Command="{Binding DeleteStatCommand}"/>
+            </StackPanel>
+            <ListBox ItemsSource="{Binding Stats}" SelectedItem="{Binding SelectedStat}"
+                 HorizontalContentAlignment="Stretch"
+                 Grid.Row="1" Margin="0 2 0 0" Name="StatList">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>                            
+                            <TextBlock Text="{Binding Type}" Grid.Column="0" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding ValueText}" Grid.Column="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.InputBindings>
+                    <KeyBinding Gesture="Enter" Command="{Binding EditStatCommand}"/>
+                    <KeyBinding Gesture="Delete" Command="{Binding DeleteStatCommand}"/>
+                </ListBox.InputBindings>
+            </ListBox>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,24 @@
+﻿using NGU_Helper.Model;
+using NGU_Helper.Scenarios.ZoneExpander;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+
+namespace NGU_Helper.Scenarios.MainWindow
+{
+    public class MainWindowViewModel
+    {
+        public MainWindowViewModel()
+        {
+            Zones = new ObservableCollection<ZoneExpanderPresenter>();
+        }
+
+        public ObservableCollection<ZoneExpanderPresenter> Zones { get; set; }
+
+        public ICommand OpenItemsListCommand { get; set; }
+    }
+}
