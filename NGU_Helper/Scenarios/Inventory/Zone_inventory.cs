@@ -9,7 +9,7 @@ namespace NGU_Helper.Scenarios.Inventory
     public class Zone_inventory
     {
         public string Name { get; set; }
-        public List<ItemViewModel> Items { get; set; }
+        public List<Item_inventory> Items { get; set; }
         public int Order { get; set; }
     }
 }

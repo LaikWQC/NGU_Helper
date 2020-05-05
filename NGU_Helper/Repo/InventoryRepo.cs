@@ -39,9 +39,9 @@ namespace NGU_Helper.Repo
             return model;
         }
 
-        private ItemViewModel Convert(Item item)
+        private Item_inventory Convert(Item item)
         {
-            var model = new ItemViewModel()
+            var model = new Item_inventory()
             {
                 Name = item.Name,
                 Level = item.Level,

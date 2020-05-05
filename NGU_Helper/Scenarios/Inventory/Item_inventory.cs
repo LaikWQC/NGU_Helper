@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 
 namespace NGU_Helper.Scenarios.Inventory
 {
-    public class ItemViewModel
+    public class Item_inventory
     {
         public Guid Id { get; set; }
         public ItemType Type { get; set; }

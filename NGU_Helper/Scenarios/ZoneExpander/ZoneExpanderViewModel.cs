@@ -15,6 +15,6 @@ namespace NGU_Helper.Scenarios.ZoneExpander
         }
 
         public string Header => _model.Name;
-        public List<ItemViewModel> Items => _model.Items;
+        public List<Item_inventory> Items => _model.Items;
     }
 }

@@ -101,6 +101,11 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repo\ItemListRepo.cs" />
     <Compile Include="Scenarios\Inventory\InventoryItem.cs" />
+    <Compile Include="Scenarios\Inventory\InventoryPresenter.cs" />
+    <Compile Include="Scenarios\Inventory\InventoryView.xaml.cs">
+      <DependentUpon>InventoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scenarios\Inventory\InventoryViewModel.cs" />
     <Compile Include="Scenarios\Inventory\Item_inventory.cs" />
     <Compile Include="Scenarios\Inventory\Stat_inventory.cs" />
     <Compile Include="Scenarios\Inventory\Zone_inventory.cs" />
@@ -149,6 +154,10 @@
     <Compile Include="Utils\Enums\StatTypeBl.cs" />
     <Compile Include="Utils\ImageCreator.cs" />
     <Compile Include="Utils\ViewModelBase.cs" />
+    <Page Include="Scenarios\Inventory\InventoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Scenarios\ItemList\ItemCard\ItemCardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -243,6 +252,14 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Utils\Images\no_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Utils\Images\Empty_Accessory.png" />
+    <Resource Include="Utils\Images\Empty_Chest.png" />
+    <Resource Include="Utils\Images\Empty_Boots.png" />
+    <Resource Include="Utils\Images\Empty_Head.png" />
+    <Resource Include="Utils\Images\Empty_Legs.png" />
+    <Resource Include="Utils\Images\Empty_Weapon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

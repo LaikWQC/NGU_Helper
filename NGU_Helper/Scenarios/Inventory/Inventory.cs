@@ -9,8 +9,6 @@ namespace NGU_Helper.Scenarios.Inventory
 {
     public class Inventory
     {
-        private List<InventoryItem> Outfit;
-        private List<InventoryItem> Accessories;
         private InventoryItem _selectedSlot;
 
         public Inventory(int accessorySlots)
@@ -19,6 +17,9 @@ namespace NGU_Helper.Scenarios.Inventory
             Accessories = InventoryItem.GetAccessoryItems(accessorySlots);
         }
 
+        public List<InventoryItem> Outfit { get; private set; }
+        public List<InventoryItem> Accessories { get; private set; }
+
         public void Equip(InventoryItem item)
         {
             item.Item = null;
@@ -26,7 +27,7 @@ namespace NGU_Helper.Scenarios.Inventory
                 _findSlot();
         }
 
-        public void UnEquip(ItemViewModel item)
+        public void UnEquip(Item_inventory item)
         {
             if (item.Type == ItemType.Accessory)
             {

@@ -53,13 +53,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border x:Name="ground" 
-                            Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center"
-                            BorderThickness="2" BorderBrush="Gray" CornerRadius="1">
+                    <Grid>
                         <Image Source="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
                                RenderOptions.BitmapScalingMode="Fant" Stretch="Uniform"                               
                                Focusable="False" SnapsToDevicePixels="True" UseLayoutRounding="True"/>
-                    </Border>
+                        <Border x:Name="ground" 
+                            Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                            BorderThickness="2" BorderBrush="Gray" CornerRadius="1"/>
+                    </Grid>                    
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter TargetName="ground" Property="BorderBrush" Value="Gold"/>

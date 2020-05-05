@@ -1,20 +1,43 @@
-﻿using NGU_Helper.Utils.Enums;
+﻿using NGU_Helper.Utils;
+using NGU_Helper.Utils.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media.Imaging;
 
 namespace NGU_Helper.Scenarios.Inventory
 {
-    public class InventoryItem
+    public class InventoryItem : ViewModelBase
     {
         public InventoryItem(ItemType type)
         {
             Type = type;
         }
 
-        public ItemViewModel Item { get; set; }
+        private Item_inventory _item;
+        public Item_inventory Item 
+        {
+            get => _item;
+            set
+            {
+                _item = value;
+                OnPropertyChanged(nameof(Image));
+            }
+        }
+
+        public BitmapImage Image
+        {
+            get
+            {
+                if (Item != null)
+                    return Item.Image;
+                else
+                    return ImageCreator.FreeSlotImage(Type);
+            }
+        }
+
         public ItemType Type { get; set; }
 
         public static List<InventoryItem> GetOufitItems()

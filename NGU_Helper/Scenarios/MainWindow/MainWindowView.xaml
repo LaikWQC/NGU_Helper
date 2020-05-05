@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:it="clr-namespace:NGU_Helper.Scenarios.ZoneExpander"
+        xmlns:zone="clr-namespace:NGU_Helper.Scenarios.ZoneExpander"
+        xmlns:inventory="clr-namespace:NGU_Helper.Scenarios.Inventory"
         xmlns:local="clr-namespace:NGU_Helper.Scenarios.MainWindow"
         mc:Ignorable="d"
         Title="NGU Helper" Height="450" Width="800">
@@ -17,7 +18,7 @@
     </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="Items" Command="{Binding OpenItemsListCommand}"/>
+            <MenuItem Header="Items" Padding="2" Command="{Binding OpenItemsListCommand}"/>
         </Menu>
 
         <Grid>
@@ -27,11 +28,13 @@
             </Grid.ColumnDefinitions>
             <ItemsControl Grid.Column="0" ItemsSource="{Binding Zones}">
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="it:ZoneExpanderPresenter">
+                    <DataTemplate DataType="zone:ZoneExpanderPresenter">
                         <ContentControl Content="{Binding ViewContent}"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
+
+            <inventory:InventoryView Grid.Column="1" x:Name="Inventory"/>
         </Grid>
     </DockPanel>    
 </Window>

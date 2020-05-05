@@ -10,18 +10,27 @@ namespace NGU_Helper.Scenarios.MainWindow
         private readonly MainWindowViewModel _viewmodel;
         private readonly MainWindowView _view;
 
+        private readonly Inventory.InventoryPresenter _inventoryPresenter;
+
         private readonly InventoryRepo _repo;
 
         public MainWindowPresenter()
         {
             _repo = new InventoryRepo();
 
+            var inventory = new Inventory.Inventory(10);
+            _inventoryPresenter = new Inventory.InventoryPresenter(inventory);
+
             _viewmodel = new MainWindowViewModel()
             {
                 OpenItemsListCommand = new DelegateCommand(OpenItemsListAction)
             };
 
-            _view = new MainWindowView() { DataContext = _viewmodel };
+            _view = new MainWindowView()
+            {
+                DataContext = _viewmodel,
+                Inventory = { Content = _inventoryPresenter.ViewContent }
+            };
         }
 
         public void StartApplication()

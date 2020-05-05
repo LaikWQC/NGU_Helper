@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NGU_Helper.Utils.Enums;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -23,6 +24,28 @@ namespace NGU_Helper.Utils
             {
                 return ReturnNoImage();
             }
+        }
+
+        public static BitmapImage FreeSlotImage(ItemType type)
+        {
+            switch (type)
+            {
+                case ItemType.Weapon:
+                    return new BitmapImage(new Uri("/Utils/Images/Empty_Weapon.png", UriKind.Relative));
+                case ItemType.Head:
+                    return new BitmapImage(new Uri("/Utils/Images/Empty_Head.png", UriKind.Relative));
+                case ItemType.Chest:
+                    return new BitmapImage(new Uri("/Utils/Images/Empty_Chest.png", UriKind.Relative));
+                case ItemType.Legs:
+                    return new BitmapImage(new Uri("/Utils/Images/Empty_Legs.png", UriKind.Relative));
+                case ItemType.Boots:
+                    return new BitmapImage(new Uri("/Utils/Images/Empty_Boots.png", UriKind.Relative));
+                case ItemType.Accessory:
+                    return new BitmapImage(new Uri("/Utils/Images/Empty_Accessory.png", UriKind.Relative));
+                default:
+                    return new BitmapImage(new Uri("/Utils/Images/no_image.png", UriKind.Relative));
+            }
+            
         }
 
         private static BitmapImage ReturnNoImage()
