@@ -15,30 +15,33 @@ namespace NGU_Helper.Scenarios.Inventory
         {
             Outfit = InventoryItem.GetOufitItems();
             Accessories = InventoryItem.GetAccessoryItems(accessorySlots);
+            _findSlot();
         }
 
         public List<InventoryItem> Outfit { get; private set; }
         public List<InventoryItem> Accessories { get; private set; }
 
-        public void Equip(InventoryItem item)
+        public void Equip(Item_inventory item)
+        {
+            if (item.Type == ItemType.Accessory)
+            {
+                if(!_isEquiped(item))
+                {
+                    _selectedSlot.Item = item;
+                    _findSlot();
+                }
+            }
+            else
+            {
+                Outfit.First(x => x.Type == item.Type).Item = item;
+            }
+        }
+
+        public void UnEquip(InventoryItem item)
         {
             item.Item = null;
             if (item.Type == ItemType.Accessory)
                 _findSlot();
-        }
-
-        public void UnEquip(Item_inventory item)
-        {
-            if (item.Type == ItemType.Accessory)
-            {
-                var slot = Accessories.First(x => x.Item == item);
-                slot.Item = null;
-                _findSlot();
-            }
-            else
-            {
-                Outfit.First(x => x.Type == item.Type).Item = null;
-            }
         }
 
         private void _findSlot()
@@ -47,6 +50,11 @@ namespace NGU_Helper.Scenarios.Inventory
             if (slot != null)
                 _selectedSlot = slot;
             if (_selectedSlot == null) _selectedSlot = Accessories.LastOrDefault();
+        }
+
+        private bool _isEquiped(Item_inventory item)
+        {
+            return Accessories.Any(x => x.Item == item);
         }
 
         private void _changeAccessorySlots(int accessorySlots)

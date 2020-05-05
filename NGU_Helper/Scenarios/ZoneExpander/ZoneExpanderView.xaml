@@ -18,7 +18,9 @@
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Button Width="40" Height="40" Style="{StaticResource ImageButtonStyle}"
-                            Content="{Binding Image}"/>
+                            Content="{Binding Image}"
+                            Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:ZoneExpanderView}}, Path=DataContext.EquipCommand}"
+                            CommandParameter="{Binding}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemsPanel>

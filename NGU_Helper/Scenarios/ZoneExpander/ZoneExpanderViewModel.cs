@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace NGU_Helper.Scenarios.ZoneExpander
 {
@@ -16,5 +17,7 @@ namespace NGU_Helper.Scenarios.ZoneExpander
 
         public string Header => _model.Name;
         public List<Item_inventory> Items => _model.Items;
+
+        public ICommand EquipCommand { get; set; }
     }
 }

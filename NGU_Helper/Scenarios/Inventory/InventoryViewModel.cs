@@ -1,9 +1,11 @@
-﻿using System;
+﻿using NGU_Helper.Utils;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace NGU_Helper.Scenarios.Inventory
 {
@@ -18,5 +20,7 @@ namespace NGU_Helper.Scenarios.Inventory
 
         public List<InventoryItem> Outfit => _model.Outfit;
         public List<InventoryItem> Accessories => _model.Accessories;
+
+        public ICommand UnequipCommand => new DelegateCommand((param) => _model.UnEquip((InventoryItem)param));
     }
 }

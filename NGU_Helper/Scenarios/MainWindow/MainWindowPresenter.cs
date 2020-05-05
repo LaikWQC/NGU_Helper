@@ -1,7 +1,9 @@
 ﻿using NGU_Helper.Repo;
+using NGU_Helper.Scenarios.Inventory;
 using NGU_Helper.Scenarios.ItemList;
 using NGU_Helper.Scenarios.ZoneExpander;
 using NGU_Helper.Utils;
+using System;
 
 namespace NGU_Helper.Scenarios.MainWindow
 {
@@ -11,6 +13,7 @@ namespace NGU_Helper.Scenarios.MainWindow
         private readonly MainWindowView _view;
 
         private readonly Inventory.InventoryPresenter _inventoryPresenter;
+        private readonly Inventory.Inventory _inventory;
 
         private readonly InventoryRepo _repo;
 
@@ -18,8 +21,8 @@ namespace NGU_Helper.Scenarios.MainWindow
         {
             _repo = new InventoryRepo();
 
-            var inventory = new Inventory.Inventory(10);
-            _inventoryPresenter = new Inventory.InventoryPresenter(inventory);
+            _inventory = new Inventory.Inventory(10);
+            _inventoryPresenter = new Inventory.InventoryPresenter(_inventory);
 
             _viewmodel = new MainWindowViewModel()
             {
@@ -43,7 +46,12 @@ namespace NGU_Helper.Scenarios.MainWindow
         {
             var zones = _repo.GetZones();
             _viewmodel.Zones.Clear();
-            zones.ForEach(x => _viewmodel.Zones.Add(new ZoneExpanderPresenter(x)));
+            foreach(var zone in zones)
+            {
+                var presenter = new ZoneExpanderPresenter(zone);
+                presenter.EquipChanged += (sender,e) => _inventory.Equip(e);
+                _viewmodel.Zones.Add(presenter);
+            }
         }
 
         private void OpenItemsListAction()
