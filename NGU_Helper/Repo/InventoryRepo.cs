@@ -23,7 +23,7 @@ namespace NGU_Helper.Repo
 
         public List<Zone_inventory> GetZones()
         {
-            var zones = _zonesDao.GetAllZones();
+            var zones = _zonesDao.GetAllZones().OrderByDescending(x=>x.Order);
             return zones.Select(x => Convert(x)).ToList();
         }
 

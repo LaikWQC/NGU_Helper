@@ -82,18 +82,15 @@ namespace NGU_Helper.Scenarios.ItemList.StatCard
             if (_isCreate)
             {
                 _model.Id = _repo.CreateStat(_model);
-                CloseWindow();
-                SaveComplete?.Invoke(this, _model);
             }
             else
             {
                 _repo.EditStat(_model);
-                CloseWindow();
-                EditComplete?.Invoke(this, null);
             }
+            CloseWindow();
+            SaveComplete?.Invoke(this, _model);
         }
 
         public event EventHandler<Stat_ItemList> SaveComplete;
-        public event EventHandler EditComplete;
     }
 }

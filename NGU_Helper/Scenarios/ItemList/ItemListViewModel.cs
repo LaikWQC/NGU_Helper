@@ -14,14 +14,11 @@ namespace NGU_Helper.Scenarios.ItemList
     {
         public ItemListViewModel()
         {
-            Zones = new ObservableCollection<Zone_ItemList>();
-            Items = new ObservableCollection<Item_ItemList>();
-            Stats = new ObservableCollection<Stat_ItemList>();
         }
 
         public ObservableCollection<Zone_ItemList> Zones { get; set; }
-        public ObservableCollection<Item_ItemList> Items { get; set; }
-        public ObservableCollection<Stat_ItemList> Stats { get; set; }
+        public ObservableCollection<Item_ItemList> Items => SelectedZone?.Items;
+        public ObservableCollection<Stat_ItemList> Stats => SelectedItem?.Stats;
 
         private Zone_ItemList _selectedZone;
         public Zone_ItemList SelectedZone
@@ -30,14 +27,7 @@ namespace NGU_Helper.Scenarios.ItemList
             set
             {
                 _selectedZone = value;
-                Items.Clear();
-                if (_selectedZone != null && _selectedZone.Items != null) 
-                {
-                    foreach (var item in _selectedZone.Items)
-                    {
-                        Items.Add(item);
-                    }
-                }
+                OnPropertyChanged(nameof(Items));
                 OnPropertyChanged(nameof(SelectedZone));
             }
         }
@@ -49,14 +39,7 @@ namespace NGU_Helper.Scenarios.ItemList
             set
             {
                 _selecteditem = value;
-                Stats.Clear();
-                if (_selecteditem != null && _selecteditem.Stats != null) 
-                {
-                    foreach (var stat in _selecteditem.Stats)
-                    {
-                        Stats.Add(stat);
-                    }
-                }
+                OnPropertyChanged(nameof(Stats));
                 OnPropertyChanged(nameof(SelectedItem));
             }
         }

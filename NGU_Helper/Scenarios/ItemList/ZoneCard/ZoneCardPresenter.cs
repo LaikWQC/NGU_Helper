@@ -79,18 +79,15 @@ namespace NGU_Helper.Scenarios.ItemList.ZoneCard
             if (_isCreate)
             {
                 _model.Id = _repo.CreateZone(_model);
-                CloseWindow();
-                SaveComplete?.Invoke(this, _model);
             }
             else
             {
                 _repo.EditZone(_model);
-                CloseWindow();
-                EditComplete?.Invoke(this, null);
             }
+            CloseWindow();
+            SaveComplete?.Invoke(this, _model);
         }
 
         public event EventHandler<Zone_ItemList> SaveComplete;
-        public event EventHandler EditComplete;
     }
 }

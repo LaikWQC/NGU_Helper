@@ -23,6 +23,7 @@ namespace NGU_Helper.Data
             using (var context = new DataContext())
             {
                 var stat = context.Stats.Find(model.Id);
+                if (stat == null) return;
                 stat.Value = model.Value;
                 stat.StatType = model.StatType;
                 context.SaveChanges();

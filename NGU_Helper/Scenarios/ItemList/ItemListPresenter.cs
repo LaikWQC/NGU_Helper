@@ -127,11 +127,11 @@ namespace NGU_Helper.Scenarios.ItemList
             if (_viewmodel.SelectedZone == null) return;
 
             var presenter = new ZoneCardPresenter(_view, _repo);
-            presenter.EditComplete += OnZoneEdited;
+            presenter.SaveComplete += OnZoneEdited;
             presenter.Show(_viewmodel.SelectedZone);
         }
 
-        private void OnZoneEdited(object sender, EventArgs e)
+        private void OnZoneEdited(object sender, Zone_ItemList e)
         {
             var zone = _viewmodel.SelectedZone;
             var item = _viewmodel.SelectedItem;
@@ -194,7 +194,7 @@ namespace NGU_Helper.Scenarios.ItemList
 
         private void OnItemAdded(object sender, Item_ItemList e)
         {
-            _viewmodel.Items.Add(e);
+            _viewmodel.SelectedZone.AddItem(e);
             SortItems();
             _viewmodel.SelectedItem = e;
         }
@@ -204,11 +204,11 @@ namespace NGU_Helper.Scenarios.ItemList
             if (_viewmodel.SelectedItem == null) return;
 
             var presenter = new ItemCardPresenter(_view, _repo);
-            presenter.EditComplete += OnItemEdited;
+            presenter.SaveComplete += OnItemEdited;
             presenter.Show(_viewmodel.SelectedItem);
         }
 
-        private void OnItemEdited(object sender, EventArgs e)
+        private void OnItemEdited(object sender, Item_ItemList e)
         {
             var item = _viewmodel.SelectedItem;
             var stat = _viewmodel.SelectedStat;
@@ -228,7 +228,7 @@ namespace NGU_Helper.Scenarios.ItemList
             _repo.DeleteItem(item.Id);
 
             var index = _viewmodel.Items.IndexOf(item);
-            _viewmodel.Items.Remove(item);
+            _viewmodel.SelectedZone.RemoveItem(item);
             if (_viewmodel.Items.Count > 0)
             {
                 if (_viewmodel.Items.Count > index)
@@ -269,7 +269,7 @@ namespace NGU_Helper.Scenarios.ItemList
 
         private void OnStatAdded(object sender, Stat_ItemList e)
         {            
-            _viewmodel.Stats.Add(e);
+            _viewmodel.SelectedItem.AddStat(e);
             SortStats();
             _viewmodel.SelectedStat = e;
         }
@@ -279,11 +279,11 @@ namespace NGU_Helper.Scenarios.ItemList
             if (_viewmodel.SelectedStat == null) return;
 
             var presenter = new StatCardPresenter(_view, _repo);
-            presenter.EditComplete += OnStatEdited;
+            presenter.SaveComplete += OnStatEdited;
             presenter.Show(_viewmodel.SelectedStat);
         }
 
-        private void OnStatEdited(object sender, EventArgs e)
+        private void OnStatEdited(object sender, Stat_ItemList e)
         {
             var stat = _viewmodel.SelectedStat;
             SortStats();
@@ -301,7 +301,7 @@ namespace NGU_Helper.Scenarios.ItemList
             _repo.DeleteStat(stat.Id);
 
             var index = _viewmodel.Stats.IndexOf(stat);
-            _viewmodel.Stats.Remove(stat);
+            _viewmodel.SelectedItem.RemoveStat(stat);
             if (_viewmodel.Stats.Count > 0)
             {
                 if (_viewmodel.Stats.Count > index)
@@ -333,8 +333,7 @@ namespace NGU_Helper.Scenarios.ItemList
 
         private void _init()
         {
-            var zones = _repo.GetAllZones();
-            zones.ForEach(x => _viewmodel.Zones.Add(x));
+            _viewmodel.Zones = _repo.GetAllZones();
         }
     }
 }

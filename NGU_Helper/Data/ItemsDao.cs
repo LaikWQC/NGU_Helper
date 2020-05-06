@@ -22,11 +22,12 @@ namespace NGU_Helper.Data
         {
             using (var context = new DataContext())
             {
-                var _item = context.Items.Find(model.Id);
-                _item.Name = model.Name;
-                _item.Level = model.Level;
-                _item.ItemType = model.ItemType;
-                _item.ImageUrl = model.ImageUrl;
+                var item = context.Items.Find(model.Id);
+                if (item == null) return;
+                item.Name = model.Name;
+                item.Level = model.Level;
+                item.ItemType = model.ItemType;
+                item.ImageUrl = model.ImageUrl;
                 context.SaveChanges();
             }
         }

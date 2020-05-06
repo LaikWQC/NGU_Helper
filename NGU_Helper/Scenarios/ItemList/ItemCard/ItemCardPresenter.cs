@@ -89,16 +89,14 @@ namespace NGU_Helper.Scenarios.ItemList.ItemCard
             _model.Url = _viewModel.Url;
             if (_isCreate)
             {
-                _model.Id = _repo.CreateItem(_model);
-                CloseWindow();
-                SaveComplete?.Invoke(this, _model);
+                _model.Id = _repo.CreateItem(_model);                
             }
             else
             {
                 _repo.EditItem(_model);
-                CloseWindow();
-                EditComplete?.Invoke(this, null);
             }
+            CloseWindow();
+            SaveComplete?.Invoke(this, _model);
         }
 
         private void SelectImageAction()
@@ -109,11 +107,27 @@ namespace NGU_Helper.Scenarios.ItemList.ItemCard
             op.InitialDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
             if (op.ShowDialog() == true)
             {
-                _viewModel.Url = op.FileName.Split('\\').Last();   
+                _viewModel.Url = op.FileName.Split('\\').Last();
+                SetName(_viewModel.Url);
             }
         }
 
+        private void SetName(string url)
+        {
+            if (string.IsNullOrEmpty(url)) return;
+            url = url.Replace("_", " ");
+            url = url.Replace(".png", "");
+
+            //если имя начинается с номера и '-', то удалим эту часть
+            var splitted = url.Split('-');
+            if (splitted.Length > 1 && Int32.TryParse(splitted[0],out _)) 
+            {
+                url = string.Join("-", splitted.Skip(1).ToArray()).Trim();
+            }
+
+            _viewModel.Name = url;
+        }
+
         public event EventHandler<Item_ItemList> SaveComplete;
-        public event EventHandler EditComplete;
     }
 }

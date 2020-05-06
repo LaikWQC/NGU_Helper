@@ -34,7 +34,7 @@
                         Command="{Binding DeleteZoneCommand}"/>
             </StackPanel>
             <ListBox ItemsSource="{Binding Zones}" SelectedItem="{Binding SelectedZone}"
-                     HorizontalContentAlignment="Stretch" 
+                     HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      Grid.Row="1" Margin="0 2 0 0" Name="ZoneList">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -44,7 +44,7 @@
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding Name}" Grid.Column="0" Margin="0 0 5 0"
-                                   TextWrapping="Wrap"/>
+                                   TextTrimming="CharacterEllipsis"/>
                             <TextBlock Text="{Binding ItemsCount}" Grid.Column="1"/>
                         </Grid>
                     </DataTemplate>
@@ -70,7 +70,7 @@
                         Command="{Binding DeleteItemCommand}"/>
             </StackPanel>
             <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"
-                 HorizontalContentAlignment="Stretch"
+                 HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  Grid.Row="1" Margin="0 2 0 0" Name="ItemList">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -85,7 +85,7 @@
                                    RenderOptions.BitmapScalingMode="Fant" 
                                    Stretch="Uniform"/>
                             <TextBlock Text="{Binding Name}" Grid.Column="1" Margin="5 0 5 0"
-                                   TextWrapping="Wrap"/>
+                                   TextTrimming="CharacterEllipsis"/>
                             <TextBlock Text="{Binding StatsCount}" Grid.Column="2"/>
                         </Grid>
                     </DataTemplate>
@@ -111,7 +111,7 @@
                         Command="{Binding DeleteStatCommand}"/>
             </StackPanel>
             <ListBox ItemsSource="{Binding Stats}" SelectedItem="{Binding SelectedStat}"
-                 HorizontalContentAlignment="Stretch"
+                 HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  Grid.Row="1" Margin="0 2 0 0" Name="StatList">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -120,7 +120,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>                            
-                            <TextBlock Text="{Binding Type}" Grid.Column="0" Margin="0 0 5 0"/>
+                            <TextBlock Text="{Binding Type}" Grid.Column="0" Margin="0 0 5 0"
+                                       TextTrimming="CharacterEllipsis"/>
                             <TextBlock Text="{Binding ValueText}" Grid.Column="1"/>
                         </Grid>
                     </DataTemplate>

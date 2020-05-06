@@ -14,7 +14,7 @@ namespace NGU_Helper.Data
         {
             using (var context = new DataContext())
             {
-                var zones = context.Zones.Include(x => x.Items.Select(i => i.Stats)).OrderBy(x => x.Order).ToList();
+                var zones = context.Zones.Include(x => x.Items.Select(i => i.Stats)).ToList();
                 foreach (var zone in zones)
                 {
                     zone.Items = zone.Items.OrderBy(x => x.ItemType).ToList();
@@ -33,13 +33,14 @@ namespace NGU_Helper.Data
             }
         }
 
-        public void EditZone(Zone zone)
+        public void EditZone(Zone model)
         {
             using (var context = new DataContext())
             {
-                var _zone = context.Zones.Find(zone.Id);
-                _zone.Name = zone.Name;
-                _zone.Order = zone.Order;
+                var zone = context.Zones.Find(model.Id);
+                if (zone == null) return;
+                zone.Name = model.Name;
+                zone.Order = model.Order;
                 context.SaveChanges();
             }
         }

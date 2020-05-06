@@ -4,6 +4,7 @@ using NGU_Helper.Scenarios.ItemList.Models;
 using NGU_Helper.Utils.Enums;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,9 +24,12 @@ namespace NGU_Helper.Repo
         }
 
         #region Zone
-        public List<Zone_ItemList> GetAllZones()
+        public ObservableCollection<Zone_ItemList> GetAllZones()
         {
-            return _zonesDao.GetAllZones().Select(x=>Convert(x)).ToList();
+            var zones = _zonesDao.GetAllZones().OrderBy(x => x.Order).ToList();
+            var obs = new ObservableCollection<Zone_ItemList>();
+            zones.ForEach(x => obs.Add(Convert(x)));
+            return obs;
         }
 
         public Guid CreateZone(Zone_ItemList model)
@@ -99,7 +103,7 @@ namespace NGU_Helper.Repo
                 Order = zone.Order,
                 Id = zone.Id
             };
-            model.Items = zone.Items.Select(x => Convert(x)).ToList();
+            zone.Items.ForEach(x => model.Items.Add(Convert(x)));
             return model;
         }
 
@@ -114,7 +118,7 @@ namespace NGU_Helper.Repo
                 Id = item.Id,
                 ZoneId = item.ZoneId
             };
-            model.Stats = item.Stats.Select(x => Convert(x)).ToList();
+            item.Stats.ForEach(x => model.Stats.Add(Convert(x)));
             return model;
         }
 
