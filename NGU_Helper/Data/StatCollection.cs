@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace NGU_Helper.Data
 {
-    public class StatList : ObservableCollection<StatModel>
+    public class StatCollection : ObservableCollection<StatModel>
     {
-        public StatList(IEnumerable<Stat> list, int level)
+        public StatCollection(IEnumerable<Stat> list, int level)
         {
             foreach (var stat in list.OrderBy(x => x.StatType))
             {
@@ -39,21 +39,23 @@ namespace NGU_Helper.Data
         /// <summary>
         /// ставит stat на свое место с учетом сортировки
         /// (он будет удален из коллекции, так что придется перевыбрать его в случае необходимости)
+        /// /// если zone на своей позиции то вернем true
         /// </summary>
-        public void CheckPosition(StatModel stat)
+        public bool CheckPosition(StatModel stat)
         {
             var index = IndexOf(stat);
             var prevStat = index == 0 ? null : this[index - 1];
             var nextStat = index == this.Count + 1 ? null : this[index + 1];
-            //если на своем месте, то оставим
+            //если на своем месте, то вернем true
             if ((prevStat == null || prevStat.Type.Type <= stat.Type.Type) &&
                 (nextStat == null || nextStat.Type.Type >= stat.Type.Type))
-                return;
+                return true;
             //иначе удалим и вставим куда надо
             else
             {
                 Remove(stat);
                 Add(stat);
+                return false;
             }
         }
     }

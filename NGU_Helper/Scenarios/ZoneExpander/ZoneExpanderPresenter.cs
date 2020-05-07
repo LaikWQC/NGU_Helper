@@ -1,4 +1,5 @@
-﻿using NGU_Helper.Scenarios.Inventory;
+﻿using NGU_Helper.Data;
+using NGU_Helper.Scenarios.Inventory;
 using NGU_Helper.Utils;
 using System;
 using System.Windows.Controls;
@@ -11,7 +12,7 @@ namespace NGU_Helper.Scenarios.ZoneExpander
         private readonly ZoneExpanderView _view;
 
         public ContentControl ViewContent => _view;
-        public ZoneExpanderPresenter(Zone_inventory model)
+        public ZoneExpanderPresenter(ZoneModel model)
         {
             _viewmodel = new ZoneExpanderViewModel(model)
             {
@@ -21,11 +22,11 @@ namespace NGU_Helper.Scenarios.ZoneExpander
             _view = new ZoneExpanderView() { DataContext = _viewmodel };
         }
 
-        public event EventHandler<Item_inventory> EquipChanged;
+        public event EventHandler<ItemModel> EquipChanged;
 
         private void EquipAction(object param)
         {
-            EquipChanged?.Invoke(this, (Item_inventory)param);
+            EquipChanged?.Invoke(this, (ItemModel)param);
         }
     }
 }

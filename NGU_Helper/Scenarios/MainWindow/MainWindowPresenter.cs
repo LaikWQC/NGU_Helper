@@ -12,17 +12,18 @@ namespace NGU_Helper.Scenarios.MainWindow
         private readonly MainWindowViewModel _viewmodel;
         private readonly MainWindowView _view;
 
-        private readonly Inventory.InventoryPresenter _inventoryPresenter;
+        private readonly InventoryPresenter _inventoryPresenter;
         private readonly Inventory.Inventory _inventory;
 
-        private readonly InventoryRepo _repo;
+        private readonly ZoneRepo _repo;
+
 
         public MainWindowPresenter()
         {
-            _repo = new InventoryRepo();
+            _repo = new ZoneRepo();
 
             _inventory = new Inventory.Inventory(10);
-            _inventoryPresenter = new Inventory.InventoryPresenter(_inventory);
+            _inventoryPresenter = new InventoryPresenter(_inventory);
 
             _viewmodel = new MainWindowViewModel()
             {
@@ -44,7 +45,7 @@ namespace NGU_Helper.Scenarios.MainWindow
 
         private void _refresh()
         {
-            var zones = _repo.GetZones();
+            var zones = _repo.GetAllZones();
             _viewmodel.Zones.Clear();
             foreach(var zone in zones)
             {

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace NGU_Helper.Data
 {
-    public class ZoneList: ObservableCollection<ZoneModel>
+    public class ZoneCollection: ObservableCollection<ZoneModel>
     {
-        public ZoneList(IEnumerable<Zone> list)
+        public ZoneCollection(IEnumerable<Zone> list)
         {
             foreach(var zone in list.OrderBy(x=>x.Order))
             {
@@ -39,21 +39,23 @@ namespace NGU_Helper.Data
         /// <summary>
         /// ставит zone на свое место с учетом сортировки
         /// (она будет удален из коллекции, так что придется перевыбрать ее в случае необходимости)
+        /// если zone на своей позиции то вернем true
         /// </summary>
-        public void CheckPosition(ZoneModel zone)
+        public bool CheckPosition(ZoneModel zone)
         {
             var index = IndexOf(zone);
             var prevZone = index == 0 ? null : this[index - 1];
             var nextZone = index == this.Count + 1 ? null : this[index + 1];
-            //если на своем месте, то оставим
+            //если на своем месте, то вернем true
             if ((prevZone == null || prevZone.Order <= zone.Order) &&
                 (nextZone == null || nextZone.Order >= zone.Order))
-                return;
+                return true;
             //иначе удалим и вставим куда надо
             else
             {
                 Remove(zone);
                 Add(zone);
+                return false;
             }
         }
     }    

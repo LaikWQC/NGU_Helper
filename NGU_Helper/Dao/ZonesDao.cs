@@ -15,11 +15,6 @@ namespace NGU_Helper.Dao
             using (var context = new DataContext())
             {
                 var zones = context.Zones.Include(x => x.Items.Select(i => i.Stats)).ToList();
-                foreach (var zone in zones)
-                {
-                    zone.Items = zone.Items.OrderBy(x => x.ItemType).ToList();
-                    zone.Items.ForEach(z => z.Stats = z.Stats.OrderBy(s => s.StatType).ToList());
-                }
                 return zones;
             }
         }

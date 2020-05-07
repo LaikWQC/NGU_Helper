@@ -1,4 +1,5 @@
-﻿using NGU_Helper.Utils;
+﻿using NGU_Helper.Data;
+using NGU_Helper.Utils;
 using NGU_Helper.Utils.Enums;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,8 @@ namespace NGU_Helper.Scenarios.Inventory
             Type = type;
         }
 
-        private Item_inventory _item;
-        public Item_inventory Item 
+        private ItemModel _item;
+        public ItemModel Item 
         {
             get => _item;
             set

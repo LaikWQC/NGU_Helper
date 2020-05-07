@@ -19,7 +19,7 @@ namespace NGU_Helper.Data
             Name = item.Name;
             Level = item.Level;
             Type = new ItemTypeBl(item.ItemType);
-            Stats = new StatList(item.Stats, item.Level);
+            Stats = new StatCollection(item.Stats, item.Level);
             Url = item.ImageUrl;
         }
 
@@ -28,7 +28,7 @@ namespace NGU_Helper.Data
         public string Name { get; set; }
         public int Level { get; set; }
         public ItemTypeBl Type { get; set; }
-        public StatList Stats { get; set; }
+        public StatCollection Stats { get; set; }
         public string StatsCount => $"({Stats?.Count ?? 0})";
         public string Url { get; set; }
         public BitmapImage Image => ImageCreator.Create(Url);

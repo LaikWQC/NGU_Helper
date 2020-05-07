@@ -1,4 +1,5 @@
-﻿using NGU_Helper.Utils.Enums;
+﻿using NGU_Helper.Data;
+using NGU_Helper.Utils.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,9 @@ namespace NGU_Helper.Scenarios.Inventory
         public List<InventoryItem> Outfit { get; private set; }
         public List<InventoryItem> Accessories { get; private set; }
 
-        public void Equip(Item_inventory item)
+        public void Equip(ItemModel item)
         {
-            if (item.Type == ItemType.Accessory)
+            if (item.Type.Type == ItemType.Accessory)
             {
                 if(!_isEquiped(item))
                 {
@@ -33,7 +34,7 @@ namespace NGU_Helper.Scenarios.Inventory
             }
             else
             {
-                Outfit.First(x => x.Type == item.Type).Item = item;
+                Outfit.First(x => x.Type == item.Type.Type).Item = item;
             }
         }
 
@@ -52,7 +53,7 @@ namespace NGU_Helper.Scenarios.Inventory
             if (_selectedSlot == null) _selectedSlot = Accessories.LastOrDefault();
         }
 
-        private bool _isEquiped(Item_inventory item)
+        private bool _isEquiped(ItemModel item)
         {
             return Accessories.Any(x => x.Item == item);
         }

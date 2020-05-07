@@ -8,9 +8,9 @@ using NGU_Helper.Model;
 
 namespace NGU_Helper.Data
 {
-    public class ItemList : ObservableCollection<ItemModel>
+    public class ItemCollection : ObservableCollection<ItemModel>
     {
-        public ItemList(IEnumerable<Item> list)
+        public ItemCollection(IEnumerable<Item> list)
         {
             foreach (var item in list.OrderBy(x => x.ItemType))
             {
@@ -39,21 +39,23 @@ namespace NGU_Helper.Data
         /// <summary>
         /// ставит item на свое место с учетом сортировки
         /// (он будет удален из коллекции, так что придется перевыбрать его в случае необходимости)
+        /// /// если zone на своей позиции то вернем true
         /// </summary>
-        public void CheckPosition(ItemModel item)
+        public bool CheckPosition(ItemModel item)
         {
             var index = IndexOf(item);
             var prevItem = index == 0 ? null : this[index - 1];
             var nextItem = index == this.Count + 1 ? null : this[index + 1];
-            //если на своем месте, то оставим
+            //если на своем месте, то вернем true
             if ((prevItem == null || prevItem.Type.Type <= item.Type.Type) &&
                 (nextItem == null || nextItem.Type.Type >= item.Type.Type))
-                return;
+                return true;
             //иначе удалим и вставим куда надо
             else
             {
                 Remove(item);
                 Add(item);
+                return false;
             }
         }
     }

@@ -15,13 +15,13 @@ namespace NGU_Helper.Data
             Id = zone.Id;
             Name = zone.Name;
             Order = zone.Order;
-            Items = new ItemList(zone.Items);
+            Items = new ItemCollection(zone.Items);
         }
 
         public Guid Id { get; set; }
         public string Name { get; set; }
         public int Order { get; set; }
-        public ItemList Items { get; set; }
+        public ItemCollection Items { get; set; }
         public string ItemsCount => $"({Items?.Count ?? 0})";
 
         public void AddItem(ItemModel item)

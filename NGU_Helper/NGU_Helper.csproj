@@ -81,13 +81,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Data\ItemList.cs" />
+    <Compile Include="Data\ItemCollection.cs" />
     <Compile Include="Data\ItemModel.cs" />
-    <Compile Include="Data\StatList.cs" />
+    <Compile Include="Data\StatCollection.cs" />
     <Compile Include="Data\StatModel.cs" />
-    <Compile Include="Data\ZoneList.cs" />
+    <Compile Include="Data\ZoneCollection.cs" />
     <Compile Include="Data\ZoneModel.cs" />
     <Compile Include="Repo\InventoryRepo.cs" />
+    <Compile Include="Repo\ZoneRepo.cs" />
     <Compile Include="Scenarios\Inventory\Inventory.cs" />
     <Compile Include="Dao\DataContext.cs" />
     <Compile Include="Dao\ItemsDao.cs" />
