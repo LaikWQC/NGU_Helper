@@ -1,4 +1,4 @@
-﻿using NGU_Helper.Data;
+﻿using NGU_Helper.Dao;
 using NGU_Helper.Model;
 using NGU_Helper.Scenarios.ItemList.Models;
 using NGU_Helper.Utils.Enums;

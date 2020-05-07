@@ -81,12 +81,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\ItemList.cs" />
+    <Compile Include="Data\ItemModel.cs" />
+    <Compile Include="Data\StatList.cs" />
+    <Compile Include="Data\StatModel.cs" />
+    <Compile Include="Data\ZoneList.cs" />
+    <Compile Include="Data\ZoneModel.cs" />
     <Compile Include="Repo\InventoryRepo.cs" />
     <Compile Include="Scenarios\Inventory\Inventory.cs" />
-    <Compile Include="Data\DataContext.cs" />
-    <Compile Include="Data\ItemsDao.cs" />
-    <Compile Include="Data\StatsDao.cs" />
-    <Compile Include="Data\ZonesDao.cs" />
+    <Compile Include="Dao\DataContext.cs" />
+    <Compile Include="Dao\ItemsDao.cs" />
+    <Compile Include="Dao\StatsDao.cs" />
+    <Compile Include="Dao\ZonesDao.cs" />
     <Compile Include="Migrations\202004171828348_InitialCreate.cs" />
     <Compile Include="Migrations\202004171828348_InitialCreate.designer.cs">
       <DependentUpon>202004171828348_InitialCreate.cs</DependentUpon>

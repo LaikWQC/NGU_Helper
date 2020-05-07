@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NGU_Helper.Data
+namespace NGU_Helper.Dao
 {
     public class StatsDao
     {

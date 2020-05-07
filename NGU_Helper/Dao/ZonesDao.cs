@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
-namespace NGU_Helper.Data
+namespace NGU_Helper.Dao
 {
     public class ZonesDao
     {
