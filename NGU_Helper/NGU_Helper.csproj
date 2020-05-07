@@ -87,7 +87,6 @@
     <Compile Include="Data\StatModel.cs" />
     <Compile Include="Data\ZoneCollection.cs" />
     <Compile Include="Data\ZoneModel.cs" />
-    <Compile Include="Repo\InventoryRepo.cs" />
     <Compile Include="Repo\ZoneRepo.cs" />
     <Compile Include="Scenarios\Inventory\Inventory.cs" />
     <Compile Include="Dao\DataContext.cs" />
@@ -114,9 +113,6 @@
       <DependentUpon>InventoryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scenarios\Inventory\InventoryViewModel.cs" />
-    <Compile Include="Scenarios\Inventory\Item_inventory.cs" />
-    <Compile Include="Scenarios\Inventory\Stat_inventory.cs" />
-    <Compile Include="Scenarios\Inventory\Zone_inventory.cs" />
     <Compile Include="Scenarios\ItemList\ItemCard\ItemCardPresenter.cs" />
     <Compile Include="Scenarios\ItemList\ItemCard\ItemCardView.xaml.cs">
       <DependentUpon>ItemCardView.xaml</DependentUpon>
