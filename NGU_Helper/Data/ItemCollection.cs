@@ -23,11 +23,11 @@ namespace NGU_Helper.Data
         public new void Add(ItemModel item)
         {
             //найдем список item'ов такого же типа
-            var items = this.Where(x => x.Type.Type == item.Type.Type);
+            var items = this.Where(x => x.Type.Equals(item.Type)).ToList();
             if(items.Any())
             {
                 //найдем ближайший item, который имеет больший номер 
-                var nextItem = this.FirstOrDefault(x => x.Number > item.Number);
+                var nextItem = items.FirstOrDefault(x => x.Number > item.Number);
                 //если такого не окажется, вставим в конец этого списка
                 if (nextItem == null)
                 {

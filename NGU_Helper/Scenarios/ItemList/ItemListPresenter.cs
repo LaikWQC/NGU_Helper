@@ -7,6 +7,7 @@ using NGU_Helper.Utils;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NGU_Helper.Scenarios.ItemList
@@ -116,7 +117,7 @@ namespace NGU_Helper.Scenarios.ItemList
         private void OnZoneAdded(object sender, ZoneModel e)
         {
             _viewmodel.Zones.Add(e);
-            _viewmodel.SelectedZone = e;
+            _select(e);
         }
 
         private void EditZoneAction()
@@ -134,7 +135,7 @@ namespace NGU_Helper.Scenarios.ItemList
             var item = _viewmodel.SelectedItem;
             var stat = _viewmodel.SelectedStat;
             _viewmodel.Zones.Replace(e);
-            _viewmodel.SelectedZone = zone;
+            _select(zone);
             _viewmodel.SelectedItem = item;
             _viewmodel.SelectedStat = stat;
         }
@@ -154,9 +155,9 @@ namespace NGU_Helper.Scenarios.ItemList
             if (_viewmodel.Zones.Count > 0)
             {
                 if (_viewmodel.Zones.Count > index)
-                    _viewmodel.SelectedZone = _viewmodel.Zones[index];
+                    _select(_viewmodel.Zones[index]);
                 else
-                    _viewmodel.SelectedZone = _viewmodel.Zones.Last();
+                    _select(_viewmodel.Zones.Last());
             }
         }
 
@@ -185,7 +186,7 @@ namespace NGU_Helper.Scenarios.ItemList
         private void OnItemAdded(object sender, ItemModel e)
         {
             _viewmodel.SelectedZone.AddItem(e);
-            _viewmodel.SelectedItem = e;
+            _select(e);           
         }
 
         private void EditItemAction()
@@ -202,7 +203,7 @@ namespace NGU_Helper.Scenarios.ItemList
             var item = _viewmodel.SelectedItem;
             var stat = _viewmodel.SelectedStat;
             _viewmodel.Items.Replace(e);
-            _viewmodel.SelectedItem = item;
+            _select(item);
             _viewmodel.SelectedStat = stat;
         }
 
@@ -221,9 +222,9 @@ namespace NGU_Helper.Scenarios.ItemList
             if (_viewmodel.Items.Count > 0)
             {
                 if (_viewmodel.Items.Count > index)
-                    _viewmodel.SelectedItem = _viewmodel.Items[index];
+                    _select(_viewmodel.Items[index]);
                 else
-                    _viewmodel.SelectedItem = _viewmodel.Items.Last();
+                    _select(_viewmodel.Items.Last());
             }
         }
 
@@ -252,7 +253,7 @@ namespace NGU_Helper.Scenarios.ItemList
         private void OnStatAdded(object sender, StatModel e)
         {            
             _viewmodel.SelectedItem.AddStat(e);
-            _viewmodel.SelectedStat = e;
+            _select(e);
         }
 
         private void EditStatAction()
@@ -268,7 +269,7 @@ namespace NGU_Helper.Scenarios.ItemList
         {
             var stat = _viewmodel.SelectedStat;
             _viewmodel.Stats.Replace(e);
-            _viewmodel.SelectedStat = stat;
+            _select(stat);
         }
 
         private void DeleteStatAction()
@@ -286,9 +287,9 @@ namespace NGU_Helper.Scenarios.ItemList
             if (_viewmodel.Stats.Count > 0)
             {
                 if (_viewmodel.Stats.Count > index)
-                    _viewmodel.SelectedStat = _viewmodel.Stats[index];
+                    _select(_viewmodel.Stats[index]);
                 else
-                    _viewmodel.SelectedStat = _viewmodel.Stats.Last();
+                    _select(_viewmodel.Stats.Last());
             }
         }
 
@@ -308,6 +309,37 @@ namespace NGU_Helper.Scenarios.ItemList
         private void _init()
         {
             _viewmodel.Zones = _zoneRepo.GetAllZones();
+        }
+
+        private void _select(object obj)
+        {
+            if(obj is ZoneModel zone)
+            {
+                _viewmodel.SelectedZone = zone;
+                _view.ZoneList.UpdateLayout();
+                var listBoxItem = (ListBoxItem)_view.ZoneList
+                    .ItemContainerGenerator
+                    .ContainerFromItem(zone);
+                listBoxItem.Focus();
+            }
+            if (obj is ItemModel item)
+            {
+                _viewmodel.SelectedItem = item;
+                _view.ItemList.UpdateLayout();
+                var listBoxItem = (ListBoxItem)_view.ItemList
+                    .ItemContainerGenerator
+                    .ContainerFromItem(item);
+                listBoxItem.Focus();
+            }
+            if (obj is StatModel stat)
+            {
+                _viewmodel.SelectedStat = stat;
+                _view.StatList.UpdateLayout();
+                var listBoxItem = (ListBoxItem)_view.StatList
+                    .ItemContainerGenerator
+                    .ContainerFromItem(stat);
+                listBoxItem.Focus();
+            }
         }
     }
 }

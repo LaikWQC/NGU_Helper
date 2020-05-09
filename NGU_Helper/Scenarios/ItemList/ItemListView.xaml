@@ -27,11 +27,11 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <Button Content="{StaticResource AddImage}" Style="{StaticResource SqureButtonStyle}"
-                        Command="{Binding AddZoneCommand}"/>
+                        Command="{Binding AddZoneCommand}" Focusable="False"/>
                 <Button Content="{StaticResource EditImage}" Style="{StaticResource SqureButtonStyle}"
-                        Command="{Binding EditZoneCommand}"/>
+                        Command="{Binding EditZoneCommand}" Focusable="False"/>
                 <Button Content="{StaticResource DeleteImage}" Style="{StaticResource SqureButtonStyle}"
-                        Command="{Binding DeleteZoneCommand}"/>
+                        Command="{Binding DeleteZoneCommand}" Focusable="False"/>
             </StackPanel>
             <ListBox ItemsSource="{Binding Zones}" SelectedItem="{Binding SelectedZone}"
                      HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -63,11 +63,11 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <Button Content="{StaticResource AddImage}" Style="{StaticResource SqureButtonStyle}"
-                        Command="{Binding AddItemCommand}"/>
+                        Command="{Binding AddItemCommand}" Focusable="False"/>
                 <Button Content="{StaticResource EditImage}" Style="{StaticResource SqureButtonStyle}"
-                        Command="{Binding EditItemCommand}"/>
+                        Command="{Binding EditItemCommand}" Focusable="False"/>
                 <Button Content="{StaticResource DeleteImage}" Style="{StaticResource SqureButtonStyle}"
-                        Command="{Binding DeleteItemCommand}"/>
+                        Command="{Binding DeleteItemCommand}" Focusable="False"/>
             </StackPanel>
             <ListBox ItemsSource="{Binding Items}" SelectedItem="{Binding SelectedItem}"
                  HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -104,11 +104,11 @@
             </Grid.RowDefinitions>
             <StackPanel Orientation="Horizontal" Grid.Row="0">
                 <Button Content="{StaticResource AddImage}" Style="{StaticResource SqureButtonStyle}"
-                        Command="{Binding AddStatCommand}"/>
+                        Command="{Binding AddStatCommand}" Focusable="False"/>
                 <Button Content="{StaticResource EditImage}" Style="{StaticResource SqureButtonStyle}"
-                        Command="{Binding EditStatCommand}"/>
+                        Command="{Binding EditStatCommand}" Focusable="False"/>
                 <Button Content="{StaticResource DeleteImage}" Style="{StaticResource SqureButtonStyle}"
-                        Command="{Binding DeleteStatCommand}"/>
+                        Command="{Binding DeleteStatCommand}" Focusable="False"/>
             </StackPanel>
             <ListBox ItemsSource="{Binding Stats}" SelectedItem="{Binding SelectedStat}"
                  HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
