@@ -38,24 +38,11 @@ namespace NGU_Helper.Data
         /// <summary>
         /// ставит item на свое место с учетом сортировки
         /// (он будет удален из коллекции, так что придется перевыбрать его в случае необходимости)
-        /// /// если zone на своей позиции то вернем true
         /// </summary>
-        public bool CheckPosition(ItemModel item)
+        public void Replace(ItemModel item)
         {
-            var index = IndexOf(item);
-            var prevItem = index == 0 ? null : this[index - 1];
-            var nextItem = index == this.Count - 1 ? null : this[index + 1];
-            //если на своем месте, то вернем true
-            if ((prevItem == null || prevItem.Type.Type <= item.Type.Type) &&
-                (nextItem == null || nextItem.Type.Type >= item.Type.Type))
-                return true;
-            //иначе удалим и вставим куда надо
-            else
-            {
-                Remove(item);
-                Add(item);
-                return false;
-            }
+            Remove(item);
+            Add(item);
         }
     }
 }

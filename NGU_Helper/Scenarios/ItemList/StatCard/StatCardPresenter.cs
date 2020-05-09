@@ -50,7 +50,7 @@ namespace NGU_Helper.Scenarios.ItemList.StatCard
         {
             _isCreate = false;
             _model = model;
-            _viewModel.Value = _model.Value;
+            _viewModel.Value = _model.BaseValue;
             _viewModel.Type = _model.Type;
             IsChanged = false;
             ShowDialog();

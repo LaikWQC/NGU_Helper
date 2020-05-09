@@ -34,7 +34,7 @@ namespace NGU_Helper.Repo
             {
                 Id = model.Id,
                 ItemId = model.ItemId,
-                Value = model.Value,
+                Value = model.BaseValue,
                 StatType = model.Type.Type
             };
         }

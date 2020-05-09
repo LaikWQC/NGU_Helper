@@ -133,7 +133,7 @@ namespace NGU_Helper.Scenarios.ItemList
             var zone = _viewmodel.SelectedZone;
             var item = _viewmodel.SelectedItem;
             var stat = _viewmodel.SelectedStat;
-            if (_viewmodel.Zones.CheckPosition(e)) return;
+            _viewmodel.Zones.Replace(e);
             _viewmodel.SelectedZone = zone;
             _viewmodel.SelectedItem = item;
             _viewmodel.SelectedStat = stat;
@@ -201,7 +201,7 @@ namespace NGU_Helper.Scenarios.ItemList
         {
             var item = _viewmodel.SelectedItem;
             var stat = _viewmodel.SelectedStat;
-            if (_viewmodel.Items.CheckPosition(e)) return;
+            _viewmodel.Items.Replace(e);
             _viewmodel.SelectedItem = item;
             _viewmodel.SelectedStat = stat;
         }
@@ -267,7 +267,7 @@ namespace NGU_Helper.Scenarios.ItemList
         private void OnStatEdited(object sender, StatModel e)
         {
             var stat = _viewmodel.SelectedStat;
-            if (_viewmodel.Stats.CheckPosition(e)) return;
+            _viewmodel.Stats.Replace(e);
             _viewmodel.SelectedStat = stat;
         }
 

@@ -122,7 +122,7 @@
                             </Grid.ColumnDefinitions>                            
                             <TextBlock Text="{Binding Type}" Grid.Column="0" Margin="0 0 5 0"
                                        TextTrimming="CharacterEllipsis"/>
-                            <TextBlock Text="{Binding ValueText}" Grid.Column="1"/>
+                            <TextBlock Text="{Binding BaseValueText}" Grid.Column="1"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

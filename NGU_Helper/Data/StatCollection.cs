@@ -38,24 +38,11 @@ namespace NGU_Helper.Data
         /// <summary>
         /// ставит stat на свое место с учетом сортировки
         /// (он будет удален из коллекции, так что придется перевыбрать его в случае необходимости)
-        /// /// если zone на своей позиции то вернем true
         /// </summary>
-        public bool CheckPosition(StatModel stat)
+        public void Replace(StatModel stat)
         {
-            var index = IndexOf(stat);
-            var prevStat = index == 0 ? null : this[index - 1];
-            var nextStat = index == this.Count - 1 ? null : this[index + 1];
-            //если на своем месте, то вернем true
-            if ((prevStat == null || prevStat.Type.Type <= stat.Type.Type) &&
-                (nextStat == null || nextStat.Type.Type >= stat.Type.Type))
-                return true;
-            //иначе удалим и вставим куда надо
-            else
-            {
-                Remove(stat);
-                Add(stat);
-                return false;
-            }
+            Remove(stat);
+            Add(stat);
         }
     }
 }
