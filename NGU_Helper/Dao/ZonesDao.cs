@@ -12,8 +12,7 @@ namespace NGU_Helper.Dao
         {
             using (var context = new DataContext())
             {
-                var zones = context.Zones.Include(x => x.Items.Select(i => i.Stats)).ToList();
-                return zones;
+                return context.Zones.Include(x => x.Items.Select(i => i.Stats)).ToList();
             }
         }
 

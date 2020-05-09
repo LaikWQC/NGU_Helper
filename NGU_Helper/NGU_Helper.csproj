@@ -81,6 +81,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dao\InventoryDao.cs" />
     <Compile Include="Data\ItemCollection.cs" />
     <Compile Include="Data\ItemModel.cs" />
     <Compile Include="Data\StatCollection.cs" />
@@ -91,6 +92,12 @@
     <Compile Include="Migrations\202005091027225_Item-number.designer.cs">
       <DependentUpon>202005091027225_Item-number.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005091215236_Inventory.cs" />
+    <Compile Include="Migrations\202005091215236_Inventory.designer.cs">
+      <DependentUpon>202005091215236_Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\EquipedInventoryItem.cs" />
+    <Compile Include="Repo\InventoryRepo.cs" />
     <Compile Include="Repo\ItemRepo.cs" />
     <Compile Include="Repo\StatRepo.cs" />
     <Compile Include="Repo\ZoneRepo.cs" />
@@ -225,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005091027225_Item-number.resx">
       <DependentUpon>202005091027225_Item-number.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005091215236_Inventory.resx">
+      <DependentUpon>202005091215236_Inventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -11,6 +11,7 @@ namespace NGU_Helper.Data
 
         public StatCollection(IEnumerable<Stat> list, int level)
         {
+            if (list == null) return;
             foreach (var stat in list.OrderBy(x => x.StatType))
             {
                 base.Add(new StatModel(stat, level));

@@ -11,6 +11,7 @@ namespace NGU_Helper.Data
 
         public ItemCollection(IEnumerable<Item> list)
         {
+            if (list == null) return;
             foreach (var item in list.OrderBy(x => x.ItemType).ThenBy(x=>x.Number))
             {
                 base.Add(new ItemModel(item));

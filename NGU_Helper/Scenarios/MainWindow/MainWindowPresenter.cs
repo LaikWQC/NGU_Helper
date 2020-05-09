@@ -59,6 +59,7 @@ namespace NGU_Helper.Scenarios.MainWindow
             var ItemsPresenter = new ItemListPresenter();
             ItemsPresenter.Show(_view);
             _refresh();
+            _inventory.Refresh();
         }
     }
 }
