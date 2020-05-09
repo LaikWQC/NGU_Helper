@@ -70,7 +70,7 @@ namespace NGU_Helper.Data
             {
                 _tooltipPresenter = new TooltipPresenter(this);
                 _tooltip = _tooltipPresenter;
-                OnPropertyChanged(nameof(ToolTip));
+                OnPropertyChanged(nameof(Tooltip));
             }
             //если данные изменились, нужно пересчитать тултип и обновить
             else
@@ -79,7 +79,7 @@ namespace NGU_Helper.Data
                 {
                     _needTooltip = false;
                     //_tooltipPresenter.Update();
-                    OnPropertyChanged(nameof(ToolTip));
+                    OnPropertyChanged(nameof(Tooltip));
                 }
             }                       
         }

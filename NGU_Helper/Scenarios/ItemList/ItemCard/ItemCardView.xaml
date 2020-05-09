@@ -45,8 +45,7 @@
         <Button Grid.Row="3" Grid.Column="1" Margin="5 0 0 0"
                 Command="{Binding ImageSelectComand}"
                 Style="{StaticResource ImageButtonStyle}"
-                Width="30" Height="30" HorizontalAlignment="Left"
-                Content="{Binding Image}"/>
+                Width="30" Height="30" HorizontalAlignment="Left"/>
 
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2"
                     HorizontalAlignment="Right" Orientation="Horizontal"

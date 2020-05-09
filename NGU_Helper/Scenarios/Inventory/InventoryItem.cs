@@ -3,7 +3,9 @@ using NGU_Helper.Utils;
 using NGU_Helper.Utils.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace NGU_Helper.Scenarios.Inventory
@@ -21,10 +23,14 @@ namespace NGU_Helper.Scenarios.Inventory
             get => _item;
             set
             {
+                if (_item != null) _item.PropertyChanged -= OnItemPropertyChanged;
                 _item = value;
+                if (_item != null) _item.PropertyChanged += OnItemPropertyChanged;
+                OnPropertyChanged(nameof(Item));
                 OnPropertyChanged(nameof(Image));
+                OnPropertyChanged(nameof(Tooltip));
             }
-        }
+        }        
 
         public BitmapImage Image
         {
@@ -39,6 +45,17 @@ namespace NGU_Helper.Scenarios.Inventory
 
         public ItemType Type { get; set; }
 
+        public ToolTip Tooltip => Item?.Tooltip;
+
+        private void OnItemPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName==nameof(Item.Tooltip))
+            {
+                OnPropertyChanged(nameof(Tooltip));
+            }                
+        }
+
+        #region static
         public static List<InventoryItem> GetOufitItems()
         {
             return Enum.GetValues(typeof(ItemType)).Cast<ItemType>()
@@ -56,5 +73,6 @@ namespace NGU_Helper.Scenarios.Inventory
             }
             return list;
         }
+        #endregion
     }
 }
