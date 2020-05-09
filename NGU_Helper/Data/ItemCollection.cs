@@ -11,7 +11,7 @@ namespace NGU_Helper.Data
 
         public ItemCollection(IEnumerable<Item> list)
         {
-            foreach (var item in list.OrderBy(x => x.ItemType))
+            foreach (var item in list.OrderBy(x => x.ItemType).ThenBy(x=>x.Number))
             {
                 base.Add(new ItemModel(item));
             }
@@ -22,16 +22,39 @@ namespace NGU_Helper.Data
         /// </summary>
         public new void Add(ItemModel item)
         {
-            //найдем ближайший item, который имеет больший тип (мы должны вставить новый item перед ним)
-            var nextItem = this.FirstOrDefault(x => x.Type.Type > item.Type.Type);
-            //если такого не окажется, просто вставим (в конец)
-            if (nextItem == null)
-                base.Add(item);
-            //вставим перед ним
+            //найдем список item'ов такого же типа
+            var items = this.Where(x => x.Type.Type == item.Type.Type);
+            if(items.Any())
+            {
+                //найдем ближайший item, который имеет больший номер 
+                var nextItem = this.FirstOrDefault(x => x.Number > item.Number);
+                //если такого не окажется, вставим в конец этого списка
+                if (nextItem == null)
+                {
+                    var index = IndexOf(items.Last()) + 1;
+                    Insert(index, item);
+                }                    
+                //вставим перед ним
+                else
+                {
+                    var index = IndexOf(nextItem);
+                    Insert(index, item);
+                }
+            }
+            //если их не оказалось, вставим перед следующим типом
             else
             {
-                var index = IndexOf(nextItem);
-                Insert(index, item);
+                //найдем ближайший item, который имеет больший тип 
+                var nextItem = this.FirstOrDefault(x => x.Type.Type > item.Type.Type);
+                //если такого не окажется, просто вставим (в конец)
+                if (nextItem == null)
+                    base.Add(item);
+                //вставим перед ним
+                else
+                {
+                    var index = IndexOf(nextItem);
+                    Insert(index, item);
+                }
             }
         }
 
