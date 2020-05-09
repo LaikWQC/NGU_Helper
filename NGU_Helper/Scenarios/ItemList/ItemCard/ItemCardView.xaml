@@ -19,6 +19,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -29,20 +30,25 @@
         <ComboBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 0"
                   ItemsSource="{Binding Types}" SelectedItem="{Binding Path=Type}"
                   Name="Type"/>
-        <TextBlock Text="Name:" Grid.Row="1" Grid.Column="0" Margin="0 2 0 2"
+        <TextBlock Text="#:" Grid.Row="1" Grid.Column="0" Margin="0 2 0 2"
                    HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox Grid.Row="1" Grid.Column="1" Margin="5 2 0 2" Padding="2"
+                 Text="{Binding Number, UpdateSourceTrigger=PropertyChanged}"
+                 GotFocus="TextBox_GotFocus"/>
+        <TextBlock Text="Name:" Grid.Row="2" Grid.Column="0" Margin="0 2 0 2"
+                   HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Margin="5 2 0 2" Padding="2"
                  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
                  GotFocus="TextBox_GotFocus"/>
-        <TextBlock Text="Image:" Grid.Row="2" Grid.Column="0"
+        <TextBlock Text="Image:" Grid.Row="3" Grid.Column="0"
                    HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <Button Grid.Row="2" Grid.Column="1" Margin="5 0 0 0"
+        <Button Grid.Row="3" Grid.Column="1" Margin="5 0 0 0"
                 Command="{Binding ImageSelectComand}"
                 Style="{StaticResource ImageButtonStyle}"
                 Width="30" Height="30" HorizontalAlignment="Left"
                 Content="{Binding Image}"/>
 
-        <StackPanel Grid.Row="3" Grid.ColumnSpan="2"
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2"
                     HorizontalAlignment="Right" Orientation="Horizontal"
                     Margin="0 5 0 0">
             <Button Content="Save" MinWidth="40"

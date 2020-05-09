@@ -25,7 +25,7 @@ namespace NGU_Helper.Scenarios.ItemList.ItemCard
         }
 
         private string _url;
-        public string Url 
+        public string Url
         {
             get => _url;
             set
@@ -48,10 +48,21 @@ namespace NGU_Helper.Scenarios.ItemList.ItemCard
             }
         }
 
+        private int _number;
+        public int Number 
+        { 
+            get => _number;
+            set
+            { 
+                _number = value;
+                OnPropertyChanged(nameof(Number));
+            }
+        }
+
         public List<ItemTypeBl> Types { get; set; }
 
         public ICommand SaveCommand { get; set; }
         public ICommand CloseCommand { get; set; }
         public ICommand ImageSelectComand { get; set; }
-}
+    }
 }

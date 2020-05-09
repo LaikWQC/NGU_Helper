@@ -19,6 +19,7 @@ namespace NGU_Helper.Data
             Id = item.Id;
             ZoneId = item.ZoneId;
             Name = item.Name;
+            Number = item.Number;
             Level = item.Level;
             Type = new ItemTypeBl(item.ItemType);
             Stats = new StatCollection(item.Stats, item.Level);
@@ -28,6 +29,7 @@ namespace NGU_Helper.Data
         public Guid Id { get; set; }
         public Guid ZoneId { get; set; }
         public string Name { get; set; }
+        public int Number { get; set; }
         public int Level { get; set; }
         public ItemTypeBl Type { get; set; }
         public StatCollection Stats { get; set; }

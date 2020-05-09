@@ -8,6 +8,7 @@ namespace NGU_Helper.Model
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public int Number { get; set; }
         public int Level { get; set; }
         public ItemType ItemType { get; set; }
         public string ImageUrl { get; set; }

@@ -54,6 +54,7 @@ namespace NGU_Helper.Scenarios.ItemList.ItemCard
             _isCreate = false;
             _model = model;
             _viewModel.Name = _model.Name;
+            _viewModel.Number = _model.Number;
             _viewModel.Type = _model.Type;
             _viewModel.Url = _model.Url;
             IsChanged = false;
@@ -76,6 +77,7 @@ namespace NGU_Helper.Scenarios.ItemList.ItemCard
         {
             IsChanged = false;
             _model.Name = _viewModel.Name;
+            _model.Number = _viewModel.Number;
             _model.Type = _viewModel.Type;
             _model.Url = _viewModel.Url;
             if (_isCreate)
@@ -112,9 +114,10 @@ namespace NGU_Helper.Scenarios.ItemList.ItemCard
 
             //если имя начинается с номера и '-', то удалим эту часть
             var splitted = url.Split('-');
-            if (splitted.Length > 1 && Int32.TryParse(splitted[0],out _)) 
+            if (splitted.Length > 1 && Int32.TryParse(splitted[0],out int number)) 
             {
                 url = string.Join("-", splitted.Skip(1).ToArray()).Trim();
+                _viewModel.Number = number;
             }
 
             _viewModel.Name = url;

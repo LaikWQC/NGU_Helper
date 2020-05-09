@@ -21,6 +21,7 @@ namespace NGU_Helper.Dao
                 var item = context.Items.Find(model.Id);
                 if (item == null) return;
                 item.Name = model.Name;
+                item.Number = model.Number;
                 item.Level = model.Level;
                 item.ItemType = model.ItemType;
                 item.ImageUrl = model.ImageUrl;

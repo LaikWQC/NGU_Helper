@@ -35,6 +35,7 @@ namespace NGU_Helper.Repo
                 Id = model.Id,
                 ZoneId = model.ZoneId,
                 Name = model.Name,
+                Number = model.Number,
                 Level = model.Level,
                 ItemType = model.Type.Type,
                 ImageUrl = model.Url

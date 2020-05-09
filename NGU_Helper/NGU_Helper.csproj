@@ -87,6 +87,10 @@
     <Compile Include="Data\StatModel.cs" />
     <Compile Include="Data\ZoneCollection.cs" />
     <Compile Include="Data\ZoneModel.cs" />
+    <Compile Include="Migrations\202005091027225_Item-number.cs" />
+    <Compile Include="Migrations\202005091027225_Item-number.designer.cs">
+      <DependentUpon>202005091027225_Item-number.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repo\ItemRepo.cs" />
     <Compile Include="Repo\StatRepo.cs" />
     <Compile Include="Repo\ZoneRepo.cs" />
@@ -218,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004172029117_ItemType.resx">
       <DependentUpon>202004172029117_ItemType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005091027225_Item-number.resx">
+      <DependentUpon>202005091027225_Item-number.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
