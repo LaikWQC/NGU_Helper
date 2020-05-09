@@ -10,6 +10,11 @@ namespace NGU_Helper.Data
 {
     public class StatModel
     {
+        public StatModel(Guid itemId)
+        {
+            ItemId = itemId;
+        }
+
         public StatModel(Stat stat, int level)
         {
             Id = stat.Id;

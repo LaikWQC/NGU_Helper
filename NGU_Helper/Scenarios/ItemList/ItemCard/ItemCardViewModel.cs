@@ -25,8 +25,6 @@ namespace NGU_Helper.Scenarios.ItemList.ItemCard
             }
         }
 
-        public int Level { get; set; }
-
         private string _url;
         public string Url 
         {

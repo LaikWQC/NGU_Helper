@@ -87,6 +87,8 @@
     <Compile Include="Data\StatModel.cs" />
     <Compile Include="Data\ZoneCollection.cs" />
     <Compile Include="Data\ZoneModel.cs" />
+    <Compile Include="Repo\ItemRepo.cs" />
+    <Compile Include="Repo\StatRepo.cs" />
     <Compile Include="Repo\ZoneRepo.cs" />
     <Compile Include="Scenarios\Inventory\Inventory.cs" />
     <Compile Include="Dao\DataContext.cs" />

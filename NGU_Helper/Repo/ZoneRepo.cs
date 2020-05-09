@@ -1,33 +1,48 @@
 ﻿using NGU_Helper.Dao;
 using NGU_Helper.Data;
 using NGU_Helper.Model;
-using NGU_Helper.Scenarios.ItemList.Models;
-using NGU_Helper.Utils.Enums;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NGU_Helper.Repo
 {
     public class ZoneRepo
     {
-        private readonly ZonesDao _zonesDao;
-        private readonly ItemsDao _itemsDao;
-        private readonly StatsDao _statsDao;
+        private readonly ZonesDao _dao;
         public ZoneRepo()
         {
-            _zonesDao = new ZonesDao();
-            _itemsDao = new ItemsDao();
-            _statsDao = new StatsDao();
+            _dao = new ZonesDao();
         }
 
         public ZoneCollection GetAllZones()
         {
-            var zones = _zonesDao.GetAllZones().ToList();
+            var zones = _dao.GetAllZones().ToList();
             return new ZoneCollection(zones);
+        }
+
+        public void CreateZone(ZoneModel model)
+        {
+            _dao.CreateZone(Convert(model));
+        }
+
+        public void EditZone(ZoneModel model)
+        {
+            _dao.EditZone(Convert(model));
+        }
+
+        public void DeleteZone(Guid id)
+        {
+            _dao.DeleteZone(id);
+        }
+
+        private Zone Convert(ZoneModel model)
+        {
+            return new Zone()
+            {
+                Id = model.Id,
+                Name = model.Name,
+                Order = model.Order
+            };
         }
     }
 }

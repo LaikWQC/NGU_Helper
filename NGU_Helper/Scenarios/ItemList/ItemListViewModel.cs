@@ -1,4 +1,5 @@
-﻿using NGU_Helper.Scenarios.ItemList.Models;
+﻿using NGU_Helper.Data;
+using NGU_Helper.Scenarios.ItemList.Models;
 using NGU_Helper.Utils;
 using System;
 using System.Collections.Generic;
@@ -16,12 +17,12 @@ namespace NGU_Helper.Scenarios.ItemList
         {
         }
 
-        public ObservableCollection<Zone_ItemList> Zones { get; set; }
-        public ObservableCollection<Item_ItemList> Items => SelectedZone?.Items;
-        public ObservableCollection<Stat_ItemList> Stats => SelectedItem?.Stats;
+        public ZoneCollection Zones { get; set; }
+        public ItemCollection Items => SelectedZone?.Items;
+        public StatCollection Stats => SelectedItem?.Stats;
 
-        private Zone_ItemList _selectedZone;
-        public Zone_ItemList SelectedZone
+        private ZoneModel _selectedZone;
+        public ZoneModel SelectedZone
         {
             get => _selectedZone;
             set
@@ -32,8 +33,8 @@ namespace NGU_Helper.Scenarios.ItemList
             }
         }
 
-        private Item_ItemList _selecteditem;
-        public Item_ItemList SelectedItem
+        private ItemModel _selecteditem;
+        public ItemModel SelectedItem
         {
             get => _selecteditem;
             set
@@ -44,8 +45,8 @@ namespace NGU_Helper.Scenarios.ItemList
             }
         }
 
-        private Stat_ItemList _selectedStat;
-        public Stat_ItemList SelectedStat 
+        private StatModel _selectedStat;
+        public StatModel SelectedStat 
         {
             get => _selectedStat;
             set

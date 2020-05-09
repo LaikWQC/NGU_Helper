@@ -12,6 +12,12 @@ namespace NGU_Helper.Data
 {
     public class ItemModel : ViewModelBase
     {
+        public ItemModel(Guid zoneId)
+        {
+            ZoneId = zoneId;
+            Stats = new StatCollection();
+        }
+
         public ItemModel(Item item)
         {
             Id = item.Id;

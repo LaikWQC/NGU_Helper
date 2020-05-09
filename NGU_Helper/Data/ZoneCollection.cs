@@ -45,7 +45,7 @@ namespace NGU_Helper.Data
         {
             var index = IndexOf(zone);
             var prevZone = index == 0 ? null : this[index - 1];
-            var nextZone = index == this.Count + 1 ? null : this[index + 1];
+            var nextZone = index == this.Count - 1 ? null : this[index + 1];
             //если на своем месте, то вернем true
             if ((prevZone == null || prevZone.Order <= zone.Order) &&
                 (nextZone == null || nextZone.Order >= zone.Order))

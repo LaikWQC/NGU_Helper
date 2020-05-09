@@ -18,14 +18,14 @@ namespace NGU_Helper.Scenarios.ItemList.StatCard
     {
         private readonly StatCardViewModel _viewModel;
         private readonly StatCardView _view;
-        private readonly ItemListRepo _repo;
+        private readonly StatRepo _repo;
 
-        private Stat_ItemList _model;
+        private StatModel _model;
         private bool _isCreate;
         private DelegateCommand _saveCommand;
 
         public override ContentControl ViewContent => _view;
-        public StatCardPresenter(Window owner, ItemListRepo repo) : base(owner, "Stat")
+        public StatCardPresenter(Window owner, StatRepo repo) : base(owner, "Stat")
         {
             _repo = repo;
 
@@ -42,17 +42,16 @@ namespace NGU_Helper.Scenarios.ItemList.StatCard
             _view = new StatCardView() { DataContext = _viewModel };
         }
 
-        public void Show(Item_ItemList item)
+        public void Show(Guid id)
         {
             _isCreate = true;
-            _model = new Stat_ItemList();
-            _model.ItemId = item.Id;
+            _model = new StatModel(id);
             _viewModel.Type = _viewModel.Types.First();
             IsChanged = false;
             ShowDialog();
         }
 
-        public void Show(Stat_ItemList model)
+        public void Show(StatModel model)
         {
             _isCreate = false;
             _model = model;
@@ -77,11 +76,12 @@ namespace NGU_Helper.Scenarios.ItemList.StatCard
         private void SaveAction()
         {
             IsChanged = false;
-            _model.Value = _viewModel.Value;
+            _model.BaseValue = _viewModel.Value;
             _model.Type = _viewModel.Type;
             if (_isCreate)
             {
-                _model.Id = _repo.CreateStat(_model);
+                _model.Id = Guid.NewGuid();
+                _repo.CreateStat(_model);
             }
             else
             {
@@ -91,6 +91,6 @@ namespace NGU_Helper.Scenarios.ItemList.StatCard
             SaveComplete?.Invoke(this, _model);
         }
 
-        public event EventHandler<Stat_ItemList> SaveComplete;
+        public event EventHandler<StatModel> SaveComplete;
     }
 }

@@ -10,6 +10,8 @@ namespace NGU_Helper.Data
 {
     public class ItemCollection : ObservableCollection<ItemModel>
     {
+        public ItemCollection() { }
+
         public ItemCollection(IEnumerable<Item> list)
         {
             foreach (var item in list.OrderBy(x => x.ItemType))
@@ -45,7 +47,7 @@ namespace NGU_Helper.Data
         {
             var index = IndexOf(item);
             var prevItem = index == 0 ? null : this[index - 1];
-            var nextItem = index == this.Count + 1 ? null : this[index + 1];
+            var nextItem = index == this.Count - 1 ? null : this[index + 1];
             //если на своем месте, то вернем true
             if ((prevItem == null || prevItem.Type.Type <= item.Type.Type) &&
                 (nextItem == null || nextItem.Type.Type >= item.Type.Type))

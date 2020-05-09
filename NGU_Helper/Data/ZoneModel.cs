@@ -10,6 +10,11 @@ namespace NGU_Helper.Data
 {
     public class ZoneModel : ViewModelBase
     {
+        public ZoneModel()
+        {
+            Items = new ItemCollection();
+        }
+
         public ZoneModel(Zone zone)
         {
             Id = zone.Id;
