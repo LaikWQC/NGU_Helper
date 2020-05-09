@@ -12,7 +12,6 @@ namespace NGU_Helper.Dao
             using (var context = new DataContext())
             {
                 var list = context.Inventory.Include(x => x.Item.Stats).ToList();
-                list.ForEach(x => x.Item.Stats = null);
                 return list;
             }
         }

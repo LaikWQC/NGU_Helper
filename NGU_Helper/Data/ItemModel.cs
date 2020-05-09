@@ -3,6 +3,9 @@ using NGU_Helper.Utils.Enums;
 using System;
 using System.Windows.Media.Imaging;
 using NGU_Helper.Model;
+using System.Windows.Controls;
+using NGU_Helper.Scenarios.Tooltip;
+using System.Windows.Input;
 
 namespace NGU_Helper.Data
 {
@@ -35,7 +38,7 @@ namespace NGU_Helper.Data
         public StatCollection Stats { get; set; }
         public string StatsCount => $"({Stats?.Count ?? 0})";
         public string Url { get; set; }
-        public BitmapImage Image => ImageCreator.Create(Url);
+        public BitmapImage Image => ImageCreator.Create(Url);        
 
         public void AddStat(StatModel stat)
         {
@@ -48,5 +51,38 @@ namespace NGU_Helper.Data
             Stats.Remove(stat);
             OnPropertyChanged(nameof(StatsCount));
         }
+
+        #region Tooltip
+        private bool _needTooltip;
+        private TooltipPresenter _tooltipPresenter;
+
+        private ToolTip _tooltip;
+        public ToolTip Tooltip => _tooltip ?? (_tooltip = new ToolTip());
+
+        public ICommand _mouseEnterCommand;
+        public ICommand MouseEnterCommand => _mouseEnterCommand ?? (new DelegateCommand(UpdateTooltip));
+
+        private void UpdateTooltip()
+        {
+            //изначально у нас стоит заглушка на тултип
+            //при наведении мышкой создаем презентер и заменяем им нашу заглушку
+            if(_tooltipPresenter == null)
+            {
+                _tooltipPresenter = new TooltipPresenter(this);
+                _tooltip = _tooltipPresenter;
+                OnPropertyChanged(nameof(ToolTip));
+            }
+            //если данные изменились, нужно пересчитать тултип и обновить
+            else
+            {
+                if (_needTooltip)
+                {
+                    _needTooltip = false;
+                    //_tooltipPresenter.Update();
+                    OnPropertyChanged(nameof(ToolTip));
+                }
+            }                       
+        }
+        #endregion
     }
 }
