@@ -1,10 +1,5 @@
 ﻿using NGU_Helper.Model;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NGU_Helper.Dao
 {

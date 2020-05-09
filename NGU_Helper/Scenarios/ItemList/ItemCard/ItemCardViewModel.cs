@@ -1,6 +1,5 @@
 ﻿using NGU_Helper.Utils;
 using NGU_Helper.Utils.Enums;
-using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;

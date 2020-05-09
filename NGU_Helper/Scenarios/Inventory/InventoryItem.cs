@@ -4,8 +4,6 @@ using NGU_Helper.Utils.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
 namespace NGU_Helper.Scenarios.Inventory

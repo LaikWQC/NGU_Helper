@@ -108,7 +108,6 @@
       <DependentUpon>202004172029117_ItemType.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Repo\ItemListRepo.cs" />
     <Compile Include="Scenarios\Inventory\InventoryItem.cs" />
     <Compile Include="Scenarios\Inventory\InventoryPresenter.cs" />
     <Compile Include="Scenarios\Inventory\InventoryView.xaml.cs">
@@ -135,14 +134,11 @@
       <DependentUpon>ZoneCardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scenarios\ItemList\ZoneCard\ZoneCardViewModel.cs" />
-    <Compile Include="Scenarios\ItemList\Models\Item_ItemList.cs" />
     <Compile Include="Scenarios\MainWindow\MainWindowPresenter.cs" />
     <Compile Include="Scenarios\MainWindow\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scenarios\MainWindow\MainWindowViewModel.cs" />
-    <Compile Include="Scenarios\ItemList\Models\Stat_ItemList.cs" />
-    <Compile Include="Scenarios\ItemList\Models\Zone_ItemList.cs" />
     <Compile Include="Scenarios\ZoneExpander\ZoneExpanderPresenter.cs" />
     <Compile Include="Scenarios\ZoneExpander\ZoneExpanderView.xaml.cs">
       <DependentUpon>ZoneExpanderView.xaml</DependentUpon>

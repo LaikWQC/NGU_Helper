@@ -1,5 +1,4 @@
 ﻿using NGU_Helper.Data;
-using NGU_Helper.Scenarios.Inventory;
 using NGU_Helper.Utils;
 using System;
 using System.Windows.Controls;

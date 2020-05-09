@@ -3,7 +3,6 @@ using NGU_Helper.Scenarios.Inventory;
 using NGU_Helper.Scenarios.ItemList;
 using NGU_Helper.Scenarios.ZoneExpander;
 using NGU_Helper.Utils;
-using System;
 
 namespace NGU_Helper.Scenarios.MainWindow
 {

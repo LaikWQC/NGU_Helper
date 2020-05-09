@@ -1,17 +1,11 @@
 ﻿using NGU_Helper.Data;
-using NGU_Helper.Model;
 using NGU_Helper.Repo;
 using NGU_Helper.Scenarios.ItemList.ItemCard;
 using NGU_Helper.Scenarios.ItemList.StatCard;
-using NGU_Helper.Scenarios.ItemList.Models;
 using NGU_Helper.Scenarios.ItemList.ZoneCard;
 using NGU_Helper.Utils;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
