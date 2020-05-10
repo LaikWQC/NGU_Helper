@@ -1,10 +1,7 @@
 ﻿using NGU_Helper.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace NGU_Helper.Scenarios.Tooltip
 {
@@ -14,6 +11,9 @@ namespace NGU_Helper.Scenarios.Tooltip
 
         public TooltipPresenter(ItemModel model)
         {
+            Background = Brushes.Transparent;
+            BorderThickness = new Thickness(0);
+
             _viewModel = new TooltipViewModel(model);
 
             Content = new TooltipView() { DataContext = _viewModel };

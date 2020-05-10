@@ -18,6 +18,6 @@ namespace NGU_Helper.Scenarios.Tooltip
 
         public ItemModel Model => _model;
 
-        public string Title => $"({_model.Number}) {_model.Name} lvl{_model.Level}";
+        public string Title => $"({_model.Number}) {_model.Name} lvl {_model.Level}";
     }
 }
