@@ -1,14 +1,9 @@
 # NGU_Helper
 Вспомогательная программа для игры NGU Idle. Показывает подробную информацию об инвентаре и помогает его оптимизаировать под разные задачи.
-
 Helper for the NGU Idle game. Show helpful inventory information and help to optimize it for different purposes.
 
-Картинки для вещей всегда берутся из папки Resources, сохраняя в БД только названия файлов.
-Для запуска неплохо бы иметь заполненную БД (но и у меня пока ее нет) и папку Resources с названиями как в этой БД. 
-Попытаюсь все это добавить позже.
-Но вы можете сами скачать картинки (я брал с вики) и заполнять базу. 
-Если названия файлов будет в том формате, то при загрузке картинки номер и название вещи подтянутся сами.
+В файлах есть архив Resource, там папка с картинками - она должна лежать в папке с .exe или (ну или в Debug для отладки проекта).
+There is Resource.rar in files, it contains folder with images - need to place it in same folder with .exe (or in Denug folder for project launch).
 
-Images for items are always taken from Resources folder saving only file names in the DB.
-For launch it you should have filled DB (I don't have it yet too) and Resources folder with file names like in this DB.
-I'll try to add this later.
+БД добавлю позже.
+I'll add DB later.
