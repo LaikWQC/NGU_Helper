@@ -23,7 +23,7 @@ namespace NGU_Helper.Scenarios.ItemList.ZoneCard
         public ZoneCardView()
         {
             InitializeComponent();
-            Name.Focus();
+            StartedElement.Focus();
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)

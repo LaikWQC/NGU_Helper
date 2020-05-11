@@ -14,7 +14,13 @@
                 <ResourceDictionary Source="/Utils/Styles/Styles.Xaml"/>
                 <ResourceDictionary Source="/Utils/Styles/Images.Xaml"/>
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
+            <Style x:Key="cornerBorder" TargetType="Border">
+                <Setter Property="BorderThickness" Value="3"/>
+                <Setter Property="BorderBrush" Value="Gray"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Margin" Value="3"/>
+            </Style>
+        </ResourceDictionary>        
     </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
@@ -26,15 +32,24 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <ItemsControl Grid.Column="0" ItemsSource="{Binding Zones}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="zone:ZoneExpanderPresenter">
-                        <ContentControl Content="{Binding ViewContent}"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <Border Grid.Column="0" Style="{StaticResource cornerBorder}">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" 
+                              VerticalScrollBarVisibility="Auto"
+                              Margin="5">
+                    <ItemsControl ItemsSource="{Binding Zones}"
+                              VerticalAlignment="Stretch">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="zone:ZoneExpanderPresenter">
+                                <ContentControl Content="{Binding ViewContent}"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>                
+            </Border>
 
-            <inventory:InventoryView Grid.Column="1" x:Name="Inventory"/>
+            <Border Grid.Column="1" Style="{StaticResource cornerBorder}">
+                <inventory:InventoryView x:Name="Inventory" Margin="5"/>
+            </Border>            
         </Grid>
     </DockPanel>    
 </Window>

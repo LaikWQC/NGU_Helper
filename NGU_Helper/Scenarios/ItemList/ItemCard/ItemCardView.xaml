@@ -29,7 +29,7 @@
                    HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <ComboBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 0"
                   ItemsSource="{Binding Types}" SelectedItem="{Binding Path=Type}"
-                  Name="Type"/>
+                  Name="StartedElement"/>
         <TextBlock Text="#:" Grid.Row="1" Grid.Column="0" Margin="0 2 0 2"
                    HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox Grid.Row="1" Grid.Column="1" Margin="5 2 0 2" Padding="2"

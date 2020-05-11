@@ -23,7 +23,7 @@ namespace NGU_Helper.Scenarios.ItemList.ItemCard
         public ItemCardView()
         {
             InitializeComponent();
-            Type.Focus();
+            StartedElement.Focus();
         }
 
         private void TextBox_GotFocus(object sender, RoutedEventArgs e)

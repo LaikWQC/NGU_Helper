@@ -20,7 +20,7 @@
                    HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox Grid.Row="0" Grid.Column="1" Margin="5 0 0 2" Padding="2"
                  Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
-                 Name="Name"  GotFocus="TextBox_GotFocus"/>
+                 Name="StartedElement"  GotFocus="TextBox_GotFocus"/>
         <TextBlock Text="Order:"  Grid.Row="1" Grid.Column="0"
                    HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox Grid.Row="1" Grid.Column="1" Margin="5 0 0 0" Padding="2"

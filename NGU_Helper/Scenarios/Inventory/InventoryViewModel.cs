@@ -13,18 +13,9 @@ namespace NGU_Helper.Scenarios.Inventory
         public InventoryViewModel(Inventory model)
         {
             _model = model;
-            _model.PropertyChanged += OnModelPropertyChanged;
         }
 
-        private void OnModelPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(Inventory.Result))
-                OnPropertyChanged(nameof(Criterias));
-        }
-
-        public List<InventoryItem> Outfit => _model.Outfit;
-        public List<InventoryItem> Accessories => _model.Accessories;
-        public ResultList Criterias => _model.Result;
+        public Inventory Model => _model;
 
         public ICommand UnequipCommand => new DelegateCommand((param) => _model.UnEquip((InventoryItem)param));
     }
