@@ -1,6 +1,6 @@
 # NGU_Helper
 Вспомогательная программа для игры NGU Idle. Показывает подробную информацию об инвентаре и помогает его оптимизаировать под разные задачи.
-В файлах есть Resource.rar, там папка с картинками - она должна лежать в папке с .exe или (ну или в Debug для отладки проекта).
+В файлах есть Resource.rar, там папка с картинками - она должна лежать в папке с .exe (ну или в Debug для отладки проекта).
 Так же добавил бэкап БД NGU.bak - там около 20 вещей.
 
 Helper for the NGU Idle game. Show helpful inventory information and help to optimize it for different purposes.
