@@ -10,5 +10,5 @@ Helper for the NGU Idle game. Show helpful inventory information and help to opt
 Если названия файлов будет в том формате, то при загрузке картинки номер и название вещи подтянутся сами.
 
 Images for items are always taken from Resources folder saving only file names in the DB.
-For launch you should have filled BD (I don't have it yet too) and Resources folder with file names like in this DB.
+For launch it you should have filled DB (I don't have it yet too) and Resources folder with file names like in this DB.
 I'll try to add this later.
