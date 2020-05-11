@@ -59,8 +59,30 @@ namespace NGU_Helper.Data
         private ToolTip _tooltip;
         public ToolTip Tooltip => _tooltip ?? (_tooltip = new ToolTip());
 
-        public ICommand _mouseEnterCommand;
-        public ICommand MouseEnterCommand => _mouseEnterCommand ?? (new DelegateCommand(UpdateTooltip));
+        private ICommand _mouseEnterCommand;
+        public ICommand MouseEnterCommand => _mouseEnterCommand ?? (_mouseEnterCommand = new DelegateCommand(MouseEnterAction));
+
+        private ICommand _mouseLeaveCommand;
+        public ICommand MouseLeaveCommand => _mouseLeaveCommand ?? (_mouseLeaveCommand = new DelegateCommand(MouseLeaveAction));
+
+        public event EventHandler<bool> HighlightChanged;
+
+        private void MouseEnterAction(object param)
+        {
+            UpdateTooltip();
+            if(param == null || param.GetType() == typeof(ItemModel))
+            {
+                HighlightChanged?.Invoke(this, true);
+            }
+        }
+
+        private void MouseLeaveAction(object param)
+        {
+            if (param == null || param.GetType() == typeof(ItemModel))
+            {
+                HighlightChanged?.Invoke(this, false);
+            }
+        }
 
         private void UpdateTooltip()
         {
@@ -82,6 +104,11 @@ namespace NGU_Helper.Data
                     OnPropertyChanged(nameof(Tooltip));
                 }
             }                       
+        }
+
+        private void _highlight()
+        {
+
         }
         #endregion
     }

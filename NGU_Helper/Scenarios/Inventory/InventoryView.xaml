@@ -23,16 +23,25 @@
         <ItemsControl ItemsSource="{Binding Outfit}" Grid.Row="0">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Width="40" Height="40" Style="{StaticResource ImageButtonStyle}"
+                    <Grid Width="40" Height="40">
+                        <Button Style="{StaticResource ImageButtonStyle}"
                             Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:InventoryView}}, Path=DataContext.UnequipCommand}"
                             CommandParameter="{Binding}"
                             ToolTip="{Binding Tooltip}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
-                                <i:InvokeCommandAction Command="{Binding Item.MouseEnterCommand}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </Button>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding Item.MouseEnterCommand}"
+                                                       CommandParameter="{Binding}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Border x:Name="OutfitHighlight" BorderThickness="2" CornerRadius="1" BorderBrush="Transparent"/>
+                    </Grid>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsHighlighted}" Value="true">
+                            <Setter TargetName="OutfitHighlight"  Property="BorderBrush" Value="Red"/>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemsPanel>
@@ -45,16 +54,25 @@
         <ItemsControl ItemsSource="{Binding Accessories}" Grid.Row="1">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button Width="40" Height="40" Style="{StaticResource ImageButtonStyle}"
+                    <Grid Width="40" Height="40">                        
+                        <Button Style="{StaticResource ImageButtonStyle}"
                             Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:InventoryView}}, Path=DataContext.UnequipCommand}"
                             CommandParameter="{Binding}"
                             ToolTip="{Binding Tooltip}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="MouseEnter">
-                                <i:InvokeCommandAction Command="{Binding Item.MouseEnterCommand}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                    </Button>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseEnter">
+                                    <i:InvokeCommandAction Command="{Binding Item.MouseEnterCommand}"
+                                                       CommandParameter="{Binding}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Button>
+                        <Border x:Name="AccessoriesHighlight" BorderThickness="2" CornerRadius="1" BorderBrush="Transparent"/>
+                    </Grid>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding IsHighlighted}" Value="true">
+                            <Setter TargetName="AccessoriesHighlight"  Property="BorderBrush" Value="Red"/>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
             <ItemsControl.ItemsPanel>

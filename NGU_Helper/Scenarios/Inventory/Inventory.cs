@@ -41,6 +41,47 @@ namespace NGU_Helper.Scenarios.Inventory
             _findSlot();
         }
 
+        /// <summary>
+        /// получает список одетых вещей из БД
+        /// </summary>
+        private void _restoreInventory()
+        {
+            var list = _repo.GetInventory();
+            foreach (var fit in Outfit)
+            {
+                var item = list.FirstOrDefault(x => x.Item.ItemType == fit.Type)?.Item;
+                fit.Item = item != null ? new ItemModel(item) : null;
+            }
+            foreach (var accessory in Accessories)
+            {
+                var item = list.FirstOrDefault(x => x.Item.ItemType == accessory.Type
+                    && Accessories.IndexOf(accessory) == x.Slot)?.Item;
+                accessory.Item = item != null ? new ItemModel(item) : null;
+            }
+            _calculateStats();
+        }
+
+        private void _changeAccessorySlots(int accessorySlots)
+        {
+            if (accessorySlots < 0) accessorySlots = 0;
+            var list = new List<InventoryItem>();
+            var count = Accessories.Count;
+            var equippedIndex = _selectedSlot == null ? -1 : Accessories.IndexOf(_selectedSlot);
+            _selectedSlot = null;
+            for (int i = 0; i < accessorySlots; i++)
+            {
+                var accessory = new InventoryItem(ItemType.Accessory);
+                list.Add(accessory);
+                if (count > i) accessory.Item = Accessories[i].Item;
+                if (equippedIndex == i) _selectedSlot = accessory;
+            }
+            Accessories = list;
+            _findSlot();
+            _startSave();
+            _calculateStats();
+        }
+
+        #region Equip/Unequip
         public void Equip(ItemModel item)
         {
             if(!_isEquiped(item))
@@ -71,10 +112,19 @@ namespace NGU_Helper.Scenarios.Inventory
 
         private void _findSlot()
         {
+            bool isHighlighted = false;
+            if (_selectedSlot != null)
+            {
+                isHighlighted = _selectedSlot.IsHighlighted;
+                _selectedSlot.IsHighlighted = false;
+            }
+
             var slot = Accessories.FirstOrDefault(x => x.Item == null);
             if (slot != null)
                 _selectedSlot = slot;
             if (_selectedSlot == null) _selectedSlot = Accessories.LastOrDefault();
+
+            if (_selectedSlot != null) _selectedSlot.IsHighlighted = isHighlighted;
         }
 
         private bool _isEquiped(ItemModel item)
@@ -85,46 +135,17 @@ namespace NGU_Helper.Scenarios.Inventory
                 return Outfit.Any(x => x.Item?.Id == item.Id);
         }
 
-        private void _changeAccessorySlots(int accessorySlots)
+        public void HighLightItemSlot(ItemModel item, bool isHighlight)
         {
-            if (accessorySlots < 0) accessorySlots = 0;
-            var list = new List<InventoryItem>();
-            var count = Accessories.Count;
-            var equippedIndex = _selectedSlot == null ? -1 : Accessories.IndexOf(_selectedSlot);
-            _selectedSlot = null;
-            for (int i = 0; i < accessorySlots; i++) 
-            {
-                var accessory = new InventoryItem(ItemType.Accessory);
-                list.Add(accessory);
-                if (count > i) accessory.Item = Accessories[i].Item;
-                if (equippedIndex == i) _selectedSlot = accessory;
-            }
-            Accessories = list;
-            _findSlot();
-            _startSave();
-            _calculateStats();
+            var type = item.Type.Type;
+            if (type == ItemType.Accessory)
+                _selectedSlot.IsHighlighted = isHighlight;
+            else
+                Outfit.First(x => x.Type == type).IsHighlighted = isHighlight;
         }
+        #endregion        
 
-        /// <summary>
-        /// получает список одетых вещей из БД
-        /// </summary>
-        private void _restoreInventory()
-        {
-            var list = _repo.GetInventory();
-            foreach(var fit in Outfit)
-            {
-                var item = list.FirstOrDefault(x => x.Item.ItemType == fit.Type)?.Item;
-                fit.Item = item != null ? new ItemModel(item) : null;
-            }
-            foreach(var accessory in Accessories)
-            {
-                var item = list.FirstOrDefault(x => x.Item.ItemType == accessory.Type 
-                    && Accessories.IndexOf(accessory) == x.Slot)?.Item;
-                accessory.Item = item != null ? new ItemModel(item) : null;
-            }
-            _calculateStats();
-        }
-
+        #region Save
         private void _startSave()
         {
             _needSave = true;
@@ -144,7 +165,9 @@ namespace NGU_Helper.Scenarios.Inventory
             else
                 _canSave = true;
         }
+        #endregion
 
+        #region Calculation
         public List<ItemModel> GetEquiped()
         {
             var list = new List<ItemModel>();
@@ -158,5 +181,6 @@ namespace NGU_Helper.Scenarios.Inventory
             Result = _calculator.Calculate();
             OnPropertyChanged(nameof(Result));
         }
+        #endregion
     }
 }

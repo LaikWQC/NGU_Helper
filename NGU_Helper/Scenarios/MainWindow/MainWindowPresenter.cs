@@ -1,4 +1,5 @@
-﻿using NGU_Helper.Repo;
+﻿using NGU_Helper.Data;
+using NGU_Helper.Repo;
 using NGU_Helper.Scenarios.Inventory;
 using NGU_Helper.Scenarios.ItemList;
 using NGU_Helper.Scenarios.ZoneExpander;
@@ -50,6 +51,7 @@ namespace NGU_Helper.Scenarios.MainWindow
             {
                 var presenter = new ZoneExpanderPresenter(zone);
                 presenter.EquipChanged += (sender,e) => _inventory.Equip(e);
+                presenter.HighlightChanged += (sender, e) => _inventory.HighLightItemSlot((ItemModel)sender, e);
                 _viewmodel.Zones.Add(presenter);
             }
         }

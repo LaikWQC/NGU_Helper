@@ -43,6 +43,17 @@ namespace NGU_Helper.Scenarios.Inventory
             }
         }
 
+        private bool _isHighlighted;
+        public bool IsHighlighted
+        {
+            get => _isHighlighted;
+            set
+            {
+                _isHighlighted = value;
+                OnPropertyChanged(nameof(IsHighlighted));
+            }
+        }
+
         public ItemType Type { get; set; }
 
         public ToolTip Tooltip => Item?.Tooltip;

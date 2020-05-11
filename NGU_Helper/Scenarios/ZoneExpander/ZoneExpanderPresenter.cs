@@ -13,6 +13,11 @@ namespace NGU_Helper.Scenarios.ZoneExpander
         public ContentControl ViewContent => _view;
         public ZoneExpanderPresenter(ZoneModel model)
         {
+            foreach(var item in model.Items)
+            {
+                item.HighlightChanged += OnHighlightChanged;
+            }
+
             _viewmodel = new ZoneExpanderViewModel(model)
             {
                 EquipCommand = new DelegateCommand((param) => EquipAction(param))
@@ -22,10 +27,16 @@ namespace NGU_Helper.Scenarios.ZoneExpander
         }
 
         public event EventHandler<ItemModel> EquipChanged;
+        public event EventHandler<bool> HighlightChanged;
 
         private void EquipAction(object param)
         {
             EquipChanged?.Invoke(this, (ItemModel)param);
+        }
+
+        private void OnHighlightChanged(object sender, bool e)
+        {
+            HighlightChanged?.Invoke(sender, e);
         }
     }
 }
