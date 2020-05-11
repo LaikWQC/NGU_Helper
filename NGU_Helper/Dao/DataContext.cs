@@ -13,5 +13,6 @@ namespace NGU_Helper.Dao
         public DbSet<Item> Items { get; set; }
         public DbSet<Stat> Stats { get; set; }
         public DbSet<EquipedInventoryItem> Inventory { get; set; }
+        public DbSet<Criteria> Criteria { get; set; }
     }
 }

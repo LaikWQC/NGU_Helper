@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dao\CriteriaDao.cs" />
     <Compile Include="Dao\InventoryDao.cs" />
     <Compile Include="Data\ItemCollection.cs" />
     <Compile Include="Data\ItemModel.cs" />
@@ -97,11 +98,23 @@
     <Compile Include="Migrations\202005091215236_Inventory.designer.cs">
       <DependentUpon>202005091215236_Inventory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005101708583_Criteria.cs" />
+    <Compile Include="Migrations\202005101708583_Criteria.designer.cs">
+      <DependentUpon>202005101708583_Criteria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Criteria.cs" />
     <Compile Include="Model\EquipedInventoryItem.cs" />
+    <Compile Include="Repo\CriteriaRepo.cs" />
     <Compile Include="Repo\InventoryRepo.cs" />
     <Compile Include="Repo\ItemRepo.cs" />
     <Compile Include="Repo\StatRepo.cs" />
     <Compile Include="Repo\ZoneRepo.cs" />
+    <Compile Include="Scenarios\Calculating\Calculator.cs" />
+    <Compile Include="Scenarios\Calculating\Criterias\CriteriaBase.cs" />
+    <Compile Include="Scenarios\Calculating\Criterias\CriteriaList.cs" />
+    <Compile Include="Scenarios\Calculating\Criterias\CriteriaResult.cs" />
+    <Compile Include="Scenarios\Calculating\Criterias\ResultList.cs" />
+    <Compile Include="Scenarios\Calculating\Criterias\StatAggregateCriteria.cs" />
     <Compile Include="Scenarios\Inventory\Inventory.cs" />
     <Compile Include="Dao\DataContext.cs" />
     <Compile Include="Dao\ItemsDao.cs" />
@@ -163,6 +176,7 @@
     <Compile Include="Scenarios\ZoneExpander\ZoneExpanderViewModel.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\DialogBase.cs" />
+    <Compile Include="Utils\Enums\CriteriaType.cs" />
     <Compile Include="Utils\Enums\ItemType.cs" />
     <Compile Include="Utils\Enums\ItemTypeBl.cs" />
     <Compile Include="Utils\Enums\StatType.cs" />
@@ -245,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005091215236_Inventory.resx">
       <DependentUpon>202005091215236_Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005101708583_Criteria.resx">
+      <DependentUpon>202005101708583_Criteria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

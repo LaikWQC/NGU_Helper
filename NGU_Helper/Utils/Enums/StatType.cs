@@ -17,7 +17,7 @@
         AdvanceTrainingSpeed,
         BeardSpeed,
         GoldDrops,
-        GoldChance,
+        DropChance,
         QuestDrop,
         Respawn,
         MoveCooldown,

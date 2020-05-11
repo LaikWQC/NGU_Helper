@@ -1,5 +1,8 @@
 ﻿using NGU_Helper.Data;
 using NGU_Helper.Repo;
+using NGU_Helper.Scenarios.Calculating;
+using NGU_Helper.Scenarios.Calculating.Criterias;
+using NGU_Helper.Utils;
 using NGU_Helper.Utils.Enums;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,17 +10,22 @@ using System.Threading.Tasks;
 
 namespace NGU_Helper.Scenarios.Inventory
 {
-    public class Inventory
+    public class Inventory : ViewModelBase
     {
         private InventoryItem _selectedSlot;
-        private InventoryRepo _repo;
+        private readonly InventoryRepo _repo;
+        private readonly Calculator _calculator;
 
         private bool _needSave = false;
         private bool _canSave = true;
 
+        public ResultList Result { get; set; }
+
         public Inventory(int accessorySlots)
         {
             _repo = new InventoryRepo();
+            _calculator = Calculator.Get();
+            _calculator.SetInventory(this);
 
             Outfit = InventoryItem.GetOufitItems();
             Accessories = InventoryItem.GetAccessoryItems(accessorySlots);
@@ -35,24 +43,21 @@ namespace NGU_Helper.Scenarios.Inventory
 
         public void Equip(ItemModel item)
         {
-            if (item.Type.Type == ItemType.Accessory)
+            if(!_isEquiped(item))
             {
-                if(!_isEquiped(item))
+                if (item.Type.Type == ItemType.Accessory)
                 {
                     _selectedSlot.Item = item;
-                    _findSlot();
-                    _startSave();
+                    _findSlot();                   
                 }
-            }
-            else
-            {
-                var fit = Outfit.First(x => x.Type == item.Type.Type);
-                if (fit.Item?.Id != item.Id)
+                else
                 {
+                    var fit = Outfit.First(x => x.Type == item.Type.Type);
                     fit.Item = item;
-                    _startSave();
                 }
-            }
+                _startSave();
+                _calculateStats();
+            }            
         }
 
         public void UnEquip(InventoryItem item)
@@ -61,6 +66,7 @@ namespace NGU_Helper.Scenarios.Inventory
             if (item.Type == ItemType.Accessory)
                 _findSlot();
             _startSave();
+            _calculateStats();
         }
 
         private void _findSlot()
@@ -73,7 +79,10 @@ namespace NGU_Helper.Scenarios.Inventory
 
         private bool _isEquiped(ItemModel item)
         {
-            return Accessories.Any(x => x.Item?.Id == item.Id);
+            if (item.Type.Type == ItemType.Accessory)
+                return Accessories.Any(x => x.Item?.Id == item.Id);
+            else
+                return Outfit.Any(x => x.Item?.Id == item.Id);
         }
 
         private void _changeAccessorySlots(int accessorySlots)
@@ -92,8 +101,13 @@ namespace NGU_Helper.Scenarios.Inventory
             }
             Accessories = list;
             _findSlot();
+            _startSave();
+            _calculateStats();
         }
 
+        /// <summary>
+        /// получает список одетых вещей из БД
+        /// </summary>
         private void _restoreInventory()
         {
             var list = _repo.GetInventory();
@@ -107,7 +121,8 @@ namespace NGU_Helper.Scenarios.Inventory
                 var item = list.FirstOrDefault(x => x.Item.ItemType == accessory.Type 
                     && Accessories.IndexOf(accessory) == x.Slot)?.Item;
                 accessory.Item = item != null ? new ItemModel(item) : null;
-            }            
+            }
+            _calculateStats();
         }
 
         private void _startSave()
@@ -128,6 +143,20 @@ namespace NGU_Helper.Scenarios.Inventory
                 _save();
             else
                 _canSave = true;
+        }
+
+        public List<ItemModel> GetEquiped()
+        {
+            var list = new List<ItemModel>();
+            list.AddRange(Outfit.Where(x => x.Item != null).Select(x => x.Item));
+            list.AddRange(Accessories.Where(x => x.Item != null).Select(x => x.Item));
+            return list;
+        }
+
+        private void _calculateStats()
+        {
+            Result = _calculator.Calculate();
+            OnPropertyChanged(nameof(Result));
         }
     }
 }
