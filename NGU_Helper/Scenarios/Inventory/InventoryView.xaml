@@ -64,7 +64,9 @@
             </ItemsControl.ItemsPanel>
         </ItemsControl>
 
-        <ListBox Grid.Row="2" ItemsSource="{Binding Criterias}">
+        <ListBox Grid.Row="2" Margin="10" ItemsSource="{Binding Criterias}"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -72,6 +74,16 @@
                         <TextBlock Text=":" Margin="0 0 5 0"/>
                         <TextBlock Text="{Binding FinalValueText}"/>
                     </StackPanel>
+                    <DataTemplate.Resources>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding FinalValue}" Value="1">
+                                    <Setter Property="Foreground" Value="Gray"/>
+                                    <Setter Property="FontSize" Value="10"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataTemplate.Resources>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
