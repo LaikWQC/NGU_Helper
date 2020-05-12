@@ -169,6 +169,7 @@
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scenarios\MainWindow\MainWindowViewModel.cs" />
+    <Compile Include="Scenarios\Tooltip\ExItemModel.cs" />
     <Compile Include="Scenarios\Tooltip\TooltipPresenter.cs" />
     <Compile Include="Scenarios\Tooltip\TooltipView.xaml.cs">
       <DependentUpon>TooltipView.xaml</DependentUpon>

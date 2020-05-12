@@ -1,18 +1,19 @@
 ﻿using NGU_Helper.Data;
+using NGU_Helper.Scenarios.Tooltip;
+using System.Collections.Generic;
 using System.Windows.Input;
 
 namespace NGU_Helper.Scenarios.MainWindow.ZoneExpander
 {
     public class ZoneExpanderViewModel
     {
-        private readonly ZoneModel _model;
-        public ZoneExpanderViewModel(ZoneModel model)
+        public ZoneExpanderViewModel()
         {
-            _model = model;
+            
         }
 
-        public string Header => _model.Name;
-        public ItemCollection Items => _model.Items;
+        public string Header { get; set; }
+        public List<ExItemModel> Items { get; set; }
 
         public ICommand EquipCommand { get; set; }
     }

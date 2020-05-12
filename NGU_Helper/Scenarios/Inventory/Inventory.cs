@@ -2,6 +2,7 @@
 using NGU_Helper.Repo;
 using NGU_Helper.Scenarios.Calculating;
 using NGU_Helper.Scenarios.Calculating.Criterias;
+using NGU_Helper.Scenarios.Tooltip;
 using NGU_Helper.Utils;
 using NGU_Helper.Utils.Enums;
 using System.Collections.Generic;
@@ -50,13 +51,13 @@ namespace NGU_Helper.Scenarios.Inventory
             foreach (var fit in Outfit)
             {
                 var item = list.FirstOrDefault(x => x.Item.ItemType == fit.Type)?.Item;
-                fit.Item = item != null ? new ItemModel(item) : null;
+                fit.Item = item != null ? new ExItemModel(item) : null;
             }
             foreach (var accessory in Accessories)
             {
                 var item = list.FirstOrDefault(x => x.Item.ItemType == accessory.Type
                     && Accessories.IndexOf(accessory) == x.Slot)?.Item;
-                accessory.Item = item != null ? new ItemModel(item) : null;
+                accessory.Item = item != null ? new ExItemModel(item) : null;
             }
             _calculateStats();
         }
@@ -82,7 +83,7 @@ namespace NGU_Helper.Scenarios.Inventory
         }
 
         #region Equip/Unequip
-        public void Equip(ItemModel item)
+        public void Equip(ExItemModel item)
         {
             if(!_isEquiped(item))
             {
