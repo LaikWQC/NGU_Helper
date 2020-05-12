@@ -1,4 +1,4 @@
-﻿using NGU_Helper.Scenarios.ZoneExpander;
+﻿using NGU_Helper.Scenarios.MainWindow.ZoneExpander;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 

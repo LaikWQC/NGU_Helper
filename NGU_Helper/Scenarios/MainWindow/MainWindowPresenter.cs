@@ -2,7 +2,7 @@
 using NGU_Helper.Repo;
 using NGU_Helper.Scenarios.Inventory;
 using NGU_Helper.Scenarios.ItemList;
-using NGU_Helper.Scenarios.ZoneExpander;
+using NGU_Helper.Scenarios.MainWindow.ZoneExpander;
 using NGU_Helper.Utils;
 
 namespace NGU_Helper.Scenarios.MainWindow

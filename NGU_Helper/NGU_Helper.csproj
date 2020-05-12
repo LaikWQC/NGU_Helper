@@ -169,11 +169,11 @@
       <DependentUpon>TooltipView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scenarios\Tooltip\TooltipViewModel.cs" />
-    <Compile Include="Scenarios\ZoneExpander\ZoneExpanderPresenter.cs" />
-    <Compile Include="Scenarios\ZoneExpander\ZoneExpanderView.xaml.cs">
+    <Compile Include="Scenarios\MainWindow\ZoneExpander\ZoneExpanderPresenter.cs" />
+    <Compile Include="Scenarios\MainWindow\ZoneExpander\ZoneExpanderView.xaml.cs">
       <DependentUpon>ZoneExpanderView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scenarios\ZoneExpander\ZoneExpanderViewModel.cs" />
+    <Compile Include="Scenarios\MainWindow\ZoneExpander\ZoneExpanderViewModel.cs" />
     <Compile Include="Utils\DelegateCommand.cs" />
     <Compile Include="Utils\DialogBase.cs" />
     <Compile Include="Utils\Enums\CriteriaType.cs" />
@@ -215,7 +215,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Scenarios\ZoneExpander\ZoneExpanderView.xaml">
+    <Page Include="Scenarios\MainWindow\ZoneExpander\ZoneExpanderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

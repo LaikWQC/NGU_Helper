@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:zone="clr-namespace:NGU_Helper.Scenarios.ZoneExpander"
+        xmlns:zone="clr-namespace:NGU_Helper.Scenarios.MainWindow.ZoneExpander"
         xmlns:inventory="clr-namespace:NGU_Helper.Scenarios.Inventory"
         xmlns:local="clr-namespace:NGU_Helper.Scenarios.MainWindow"
         mc:Ignorable="d"
@@ -11,8 +11,8 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Utils/Styles/Styles.Xaml"/>
-                <ResourceDictionary Source="/Utils/Styles/Images.Xaml"/>
+                <ResourceDictionary Source="/Utils/styles/Styles.Xaml"/>
+                <ResourceDictionary Source="/Utils/styles/Images.Xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="cornerBorder" TargetType="Border">
                 <Setter Property="BorderThickness" Value="3"/>

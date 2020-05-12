@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace NGU_Helper.Scenarios.ZoneExpander
+namespace NGU_Helper.Scenarios.MainWindow.ZoneExpander
 {
     /// <summary>
     /// Логика взаимодействия для ZoneExpanderView.xaml

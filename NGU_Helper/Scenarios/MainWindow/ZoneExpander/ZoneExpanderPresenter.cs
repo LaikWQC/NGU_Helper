@@ -3,7 +3,7 @@ using NGU_Helper.Utils;
 using System;
 using System.Windows.Controls;
 
-namespace NGU_Helper.Scenarios.ZoneExpander
+namespace NGU_Helper.Scenarios.MainWindow.ZoneExpander
 {
     public class ZoneExpanderPresenter
     {

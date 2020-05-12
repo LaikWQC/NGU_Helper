@@ -1,7 +1,7 @@
 ﻿using NGU_Helper.Data;
 using System.Windows.Input;
 
-namespace NGU_Helper.Scenarios.ZoneExpander
+namespace NGU_Helper.Scenarios.MainWindow.ZoneExpander
 {
     public class ZoneExpanderViewModel
     {
