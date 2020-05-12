@@ -105,11 +105,6 @@ namespace NGU_Helper.Data
                 }
             }                       
         }
-
-        private void _highlight()
-        {
-
-        }
         #endregion
     }
 }

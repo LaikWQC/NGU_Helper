@@ -8,9 +8,11 @@ namespace NGU_Helper.Utils
     public abstract class DialogBase
     {
         private readonly Window _window;
+        private readonly bool _closeWarning;
 
-        public DialogBase(Window owner, string title)
+        public DialogBase(Window owner, string title, bool closeWarning = true)
         {
+            _closeWarning = closeWarning;
             _window = new Window
             {
                 Title = title,
@@ -25,7 +27,7 @@ namespace NGU_Helper.Utils
 
         private void OnClosing(object sender, CancelEventArgs e)
         {
-            if (IsChanged)
+            if (_closeWarning && IsChanged)
             {
                 MessageBoxResult result = MessageBox.Show(_window, "Close without saving?", "Warning", MessageBoxButton.OKCancel, MessageBoxImage.Question, MessageBoxResult.Cancel);
                 if (result == MessageBoxResult.Cancel)

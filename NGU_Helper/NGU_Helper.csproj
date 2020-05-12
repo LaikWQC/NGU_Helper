@@ -159,6 +159,11 @@
       <DependentUpon>ZoneCardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Scenarios\ItemList\ZoneCard\ZoneCardViewModel.cs" />
+    <Compile Include="Scenarios\MainWindow\ItemMenu\ItemMenuPresenter.cs" />
+    <Compile Include="Scenarios\MainWindow\ItemMenu\ItemMenuView.xaml.cs">
+      <DependentUpon>ItemMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scenarios\MainWindow\ItemMenu\ItemMenuViewModel.cs" />
     <Compile Include="Scenarios\MainWindow\MainWindowPresenter.cs" />
     <Compile Include="Scenarios\MainWindow\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
@@ -204,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Scenarios\ItemList\ZoneCard\ZoneCardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scenarios\MainWindow\ItemMenu\ItemMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
